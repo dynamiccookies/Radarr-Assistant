@@ -1,10 +1,20 @@
 var maxHeight = 0;
 $(document).ready(function() {
+
+	// When search button is clicked, run the searchNewMovies function
 	$('#search').click(searchNewMovies);
-	$('.container').keypress(function(e){
-		if (e.keyCode == 13){   //Enter key pressed
-			e.preventDefault(); //Required to stop page from reloading on Enter
-			searchNewMovies();  //Trigger search button click event
+
+	// When textbox is active and any key is pressed...
+	$('#titleInput').keypress(function(e){
+
+		// Check if key pressed is Enter key
+		if (e.keyCode == 13){
+
+			// Stop page from reloading because Enter key was pressed
+			e.preventDefault();
+
+			// Run the searchNewMovies function
+			searchNewMovies();
 		}
 	});
 });
@@ -34,9 +44,10 @@ function searchNewMovies() {
 		// Reverse sort results by year - newest first
 		data.sort(function(a,b) {return a.year-b.year}).reverse();
 
-		// Loop through results, 
+		// Loop through array of results, 
 		for (var i in data) {
-			var exists;
+
+			// Declare and set variables from results array
 			var file    = data[i].hasFile;
 			var image   = data[i].remotePoster;
 			var imdb    = data[i].imdbId;
@@ -45,7 +56,6 @@ function searchNewMovies() {
 			var tmdb    = data[i].tmdbId;
 			var year    = data[i].year;
 			var youtube = data[i].youTubeTrailerId;
-
 
 			// Only create movie container if the IMDb AND TMDB IDs exist
 			if (imdb && tmdb) {
@@ -74,15 +84,17 @@ function searchNewMovies() {
 						// Build YouTube trailer link string
 						"<a href='https://youtu.be/" + youtube + "' target='_blank' title='Movie Trailer'><img src='img/youtube_small.png' alt='YouTube logo' class='site'></a>" +
 
-						"<p style='text-align:left;'>" + plot + "</p>" +
-					"</div>"
+//						"<input type='button' value='" + exists + " Movie' id='" + imdb + "' onClick='add(this.id)' />" +
+						"<p style='text-align:left;'>" + plot + '</p>' +
+					'</div>'
 				);
 
+				// Shrink movie container
 				shrink(i);
 			}
 		}
 		
-		for (var x=0;x<=i;x++) {
+		for (var x = 0; x <= i; x++) {
 			$('#filmID' + x).height(maxHeight);
 		}
 	}); 
