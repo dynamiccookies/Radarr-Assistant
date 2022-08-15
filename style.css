@@ -19,6 +19,7 @@ h2.noresults {
 	border:       0;
 	height:       40px;
 	margin-left: -100px;
+	width:        135px;
 }
 #search i {font-size: 2.5em;}
 #titleInput {
