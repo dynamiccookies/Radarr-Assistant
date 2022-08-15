@@ -74,16 +74,16 @@
                                     (file ? "<a href='' target='_blank'><strong>" + title + (year ? ' (' + year + ')' : '') + '</strong></a>' : '<strong>' + title + (year ? ' (' + year + ')' : '') + '</strong>') +
     
                                     // Build movie poster image string if exists, else show 'undefined' image that contains 'No Image' text
-    								"<br><img src='" + image + "' class='poster' alt='Movie poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='undefined.png';\"><br>" +
+    								"<br><img src='" + image + "' class='poster' alt='Movie poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\"><br>" +
 
                                     // Build IMDb image link string
-                                    "<a href='https://www.imdb.com/title/" + imdb + "' target='_blank' title='Internet Movie Database'><img src='imdb_small.png' alt='IMDb logo' class='site'></a>" +
+                                    "<a href='https://www.imdb.com/title/" + imdb + "' target='_blank' title='Internet Movie Database'><img src='img/imdb_small.png' alt='IMDb logo' class='site'></a>" +
     
                                     // Build TMDB image link string
-                                    "<a href='https://www.themoviedb.org/movie/" + tmdb + "' target='_blank' title='The Movie Database'><img src='tmdb_small.png' alt='TMDB logo' class='site'></a>" +
+                                    "<a href='https://www.themoviedb.org/movie/" + tmdb + "' target='_blank' title='The Movie Database'><img src='img/tmdb_small.png' alt='TMDB logo' class='site'></a>" +
     
                                     // Build YouTube trailer link string
-                                    "<a href='https://youtu.be/" + youtube + "' target='_blank' title='Movie Trailer'><img src='youtube_small.png' alt='YouTube logo' class='site'></a>" +
+                                    "<a href='https://youtu.be/" + youtube + "' target='_blank' title='Movie Trailer'><img src='img/youtube_small.png' alt='YouTube logo' class='site'></a>" +
     
     								"<p style='text-align:left;'>" + plot + "</p>" +
     							"</div>"
