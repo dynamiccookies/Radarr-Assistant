@@ -68,8 +68,8 @@
     							"<div class='film center' id='filmID" + i + "'>" +
     
     								// If file exists in library, show green checkmark icon
-    								(file ? "<img src='dwcheckyes.png' title='Already in Library' class='checkmark'>" : '') +
-    
+    								(file ? "<img src='img/dwcheckyes.png' title='Already in Library' class='checkmark'>" : '') +
+
                                     // Build movie title string
                                     (file ? "<a href='' target='_blank'><strong>" + title + (year ? ' (' + year + ')' : '') + '</strong></a>' : '<strong>' + title + (year ? ' (' + year + ')' : '') + '</strong>') +
     
