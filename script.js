@@ -29,8 +29,17 @@ function searchNewMovies() {
 	var searchTerm = document.getElementById('titleInput').value;
 	var url        = apiUrl + '&term=' + searchTerm;
 
+	// DEBUGGING: If the 'debug' variable is TRUE, write the 'searchTerm' variable to console
+	if (debug) console.log('Search Term: ' + searchTerm);
+
 	// Call API to retreive data
 	$.getJSON(url, function(data) {
+
+		// DEBUGGING: If the 'debug' variable is TRUE, write the entire results (data) array to console
+		if (debug) {
+			console.log('Data Array:');
+			console.log(data);
+		}
 
 		// Clear loading spinner from screen
 		$("#movieDetails").empty();
@@ -59,6 +68,12 @@ function searchNewMovies() {
 
 			// Only create movie container if the IMDb AND TMDB IDs exist
 			if (imdb && tmdb) {
+
+				// DEBUGGING: If the 'debug' variable is TRUE, 
+				if (debug) {
+					console.log('Array Item ' + i + ': ');
+					console.log({file:file, image:image, imdb:imdb, plot:plot, title:title, tmdb:tmdb, year:year, youtube:youtube});
+				}
 
 				// Build HTML container with movie details and append container to screen
 				$('#movieDetails').append(
