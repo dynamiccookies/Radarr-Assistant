@@ -49,6 +49,10 @@ img.poster {
 	margin-right: auto;
 	text-align:   center;
 }
+.checkmark + a {
+    padding-left:  20px;
+    padding-right: 20px;
+}
 .container {text-align: center;}
 .film {
 	background-color: gainsboro;
