@@ -97,7 +97,7 @@ function searchNewMovies() {
 						"<a href='https://www.themoviedb.org/movie/" + tmdb + "' target='_blank' title='The Movie Database'><img src='img/tmdb_small.png' alt='TMDB logo' class='site'></a>" +
 
 						// Build YouTube trailer link string
-						"<a href='https://youtu.be/" + youtube + "' target='_blank' title='Movie Trailer'><img src='img/youtube_small.png' alt='YouTube logo' class='site'></a>" +
+						(youtube ? "<a href='https://youtu.be/" + youtube + "' target='_blank' title='Movie Trailer'><img src='img/youtube_small.png' alt='YouTube logo' class='site'></a>" : '') +
 
 //						"<input type='button' value='" + exists + " Movie' id='" + imdb + "' onClick='add(this.id)' />" +
 						"<p style='text-align:left;'>" + plot + '</p>' +
