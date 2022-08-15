@@ -121,7 +121,7 @@ function searchNewMovies() {
 			$('#filmID' + x).height(maxHeight);
 		}
 	}); 
-};
+}
 
 function shrink(i) {
 	var height        = 500;
@@ -136,4 +136,4 @@ function shrink(i) {
 		if (currentHeight >= height) {break;}
 	}
 	if (maxHeight < currentHeight) {maxHeight = currentHeight;}
-};
+}
