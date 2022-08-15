@@ -28,8 +28,9 @@
                 // Pure CSS loading spinner from loading.io
                 $("#movieDetails").html("<div class='container'><div class='lds-spinner center'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>");
 
-				// Build API URL string
-				var url = apiUrl + '&term=' + document.getElementById('titleInput').value;
+				// Declare/set variables and build API URL string based on search term
+				var searchTerm = document.getElementById('titleInput').value;
+				var url        = apiUrl + '&term=' + searchTerm;
 
 				// Call API to retreive data
 				$.getJSON(url, function(data) {
@@ -71,7 +72,7 @@
     								(file ? "<img src='img/dwcheckyes.png' title='Already in Library' class='checkmark'>" : '') +
 
                                     // Build movie title string
-                                    (file ? "<a href='' target='_blank'><strong>" + title + (year ? ' (' + year + ')' : '') + '</strong></a>' : '<strong>' + title + (year ? ' (' + year + ')' : '') + '</strong>') +
+                                    (file ? "<a href='https://app.plex.tv/desktop/#!/search?query=" + searchTerm + "' target='_blank'><strong>" + title + (year ? ' (' + year + ')' : '') + '</strong></a>' : '<strong>' + title + (year ? ' (' + year + ')' : '') + '</strong>') +
     
                                     // Build movie poster image string if exists, else show 'undefined' image that contains 'No Image' text
     								"<br><img src='" + image + "' class='poster' alt='Movie poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\"><br>" +
