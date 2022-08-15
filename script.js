@@ -61,6 +61,7 @@ function searchNewMovies() {
 			var image   = data[i].remotePoster;
 			var imdb    = data[i].imdbId;
 			var plot    = data[i].overview;
+			var runtime = data[i].runtime;
 			var title   = data[i].title;
 			var tmdb    = data[i].tmdbId;
 			var year    = data[i].year;
@@ -72,8 +73,12 @@ function searchNewMovies() {
 				// DEBUGGING: If the 'debug' variable is TRUE, 
 				if (debug) {
 					console.log('Array Item ' + i + ': ');
-					console.log({file:file, image:image, imdb:imdb, plot:plot, title:title, tmdb:tmdb, year:year, youtube:youtube});
+					console.log({file:file, image:image, imdb:imdb, plot:plot, runtime:runtime, title:title, tmdb:tmdb, year:year, youtube:youtube});
 				}
+
+				// Calculate and set hours and minutes from runtime
+				var minutes = runtime % 60;
+				var hours   = (runtime - minutes) / 60;
 
 				// Build HTML container with movie details and append container to screen
 				$('#movieDetails').append(
@@ -89,6 +94,9 @@ function searchNewMovies() {
 
 						// Build movie poster image string if exists, else show 'undefined' image that contains 'No Image' text
 						"<br><img src='" + image + "' class='poster' alt='Movie poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\"><br>" +
+
+						// Build runtime string
+						'<em>Runtime: ' + (runtime ? (hours ? hours + 'h ' : '') + minutes + 'm' : 'Unknown') + '</em><br>' +
 
 						// Build IMDb image link string
 						"<a href='https://www.imdb.com/title/" + imdb + "' target='_blank' title='Internet Movie Database'><img src='img/imdb_small.png' alt='IMDb logo' class='site'></a>" +
