@@ -90,13 +90,16 @@ function searchNewMovies() {
 						(file ? "<img src='img/dwcheckyes.png' title='Already in Library' class='checkmark'>" : '') +
 
 						// Build movie title string
-						(file ? "<a href='https://app.plex.tv/desktop/#!/search?query=" + searchTerm + "' target='_blank'><strong>" + title + (year ? ' (' + year + ')' : '') + '</strong></a>' : '<strong>' + title + (year ? ' (' + year + ')' : '') + '</strong>') +
+						'<strong>' + title + (year ? ' (' + year + ')' : '') + '</strong>' +
 
 						// Build movie poster image string if exists, else show 'undefined' image that contains 'No Image' text
 						"<br><img src='" + image + "' class='poster' alt='Movie poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\"><br>" +
 
 						// Build runtime string
 						'<em>Runtime: ' + (runtime ? (hours ? hours + 'h ' : '') + minutes + 'm' : 'Unknown') + '</em><br>' +
+
+						// Build Plex image link string
+						(file ? "<a href='https://app.plex.tv/desktop/#!/search?query=" + searchTerm + "' target='_blank' title='Find Movie on Plex'><img src='img/plex_small.png' alt='Plex logo' class='site'></a>" : '') +
 
 						// Build IMDb image link string
 						"<a href='https://www.imdb.com/title/" + imdb + "' target='_blank' title='Internet Movie Database'><img src='img/imdb_small.png' alt='IMDb logo' class='site'></a>" +
