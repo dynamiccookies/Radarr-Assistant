@@ -86,7 +86,7 @@ function searchNewMovies() {
 				$('#movieDetails').append(
 
 					// Create container for movie details
-					"<div class='film center' id='filmID" + i + "'>" +
+					"<div class='film' id='filmID" + i + "'>" +
 
 						// If file exists in library, show green checkmark icon
 						(file ? "<img src='img/dwcheckyes.png' title='Already in Library' class='checkmark'>" : '') +
@@ -116,7 +116,7 @@ function searchNewMovies() {
 						(youtube ? "<a href='https://youtu.be/" + youtube + "' target='_blank' title='Movie Trailer'><img src='img/youtube_small.png' alt='YouTube logo' class='site'></a>" : '') +
 
 //						"<input type='button' value='" + exists + " Movie' id='" + imdb + "' onClick='add(this.id)' />" +
-						"<p style='text-align:left;'>" + plot + '</p>' +
+						"<p class='plot'>" + plot + '</p>' +
 					'</div>'
 				);
 

@@ -62,8 +62,10 @@ img.poster {
 	float:            left;
 	margin:           5px!important;
 	padding:          5px 5px 10px 10px;
+	text-align:       center;
 	width:            100%;
 }
+.plot {text-align: left;}
 span.stars, span.stars > span {
     display:    inline-block;
     background: url(http://i.imgur.com/YsyS5y8.png) 0 -16px repeat-x;
