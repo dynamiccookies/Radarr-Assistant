@@ -1,4 +1,5 @@
 var maxHeight = 0;
+
 $(document).ready(function() {
 
 	// When search button is clicked, run the searchNewMovies function
@@ -61,6 +62,7 @@ function searchNewMovies() {
 			var image   = data[i].remotePoster;
 			var imdb    = data[i].imdbId;
 			var plot    = data[i].overview;
+			var rating  = data[i].ratings.value;
 			var runtime = data[i].runtime;
 			var title   = data[i].title;
 			var tmdb    = data[i].tmdbId;
@@ -73,7 +75,7 @@ function searchNewMovies() {
 				// DEBUGGING: If the 'debug' variable is TRUE, 
 				if (debug) {
 					console.log('Array Item ' + i + ': ');
-					console.log({file:file, image:image, imdb:imdb, plot:plot, runtime:runtime, title:title, tmdb:tmdb, year:year, youtube:youtube});
+					console.log({file:file, image:image, imdb:imdb, plot:plot, rating:rating, runtime:runtime, title:title, tmdb:tmdb, year:year, youtube:youtube});
 				}
 
 				// Calculate and set hours and minutes from runtime
@@ -98,6 +100,9 @@ function searchNewMovies() {
 						// Build runtime string
 						'<em>Runtime: ' + (runtime ? (hours ? hours + 'h ' : '') + minutes + 'm' : 'Unknown') + '</em><br>' +
 
+                        // Build rating stars string
+                        (rating ? "<span class='stars' title='Rated: " + +(rating / 2).toFixed(1) + "/5 stars'><span style='width:" + ((rating / 2) * 16) + "px;'></span></span><br>" : '') +
+
 						// Build Plex image link string
 						(file ? "<a href='https://app.plex.tv/desktop/#!/search?query=" + searchTerm + "' target='_blank' title='Find Movie on Plex'><img src='img/plex_small.png' alt='Plex logo' class='site'></a>" : '') +
 
@@ -120,6 +125,8 @@ function searchNewMovies() {
 			}
 		}
 		
+
+        // Adjust the height of all containers to be equal
 		for (var x = 0; x <= i; x++) {
 			$('#filmID' + x).height(maxHeight);
 		}
