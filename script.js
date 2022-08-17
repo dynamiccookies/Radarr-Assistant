@@ -92,13 +92,13 @@ function searchNewMovies() {
 						(file ? "<img src='img/dwcheckyes.png' title='Already in Library' class='checkmark'>" : '') +
 
 						// Build movie title string
-						'<strong>' + title + (year ? ' (' + year + ')' : '') + '</strong>' +
+						"<p class='title'>" + title + (year ? ' (' + year + ')' : '') + '</p>' +
 
 						// Build movie poster image string if exists, else show 'undefined' image that contains 'No Image' text
-						"<br><img src='" + image + "' class='poster' alt='Movie poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\"><br>" +
+						"<img src='" + image + "' class='poster' alt='Movie poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\">" +
 
 						// Build runtime string
-						'<em>Runtime: ' + (runtime ? (hours ? hours + 'h ' : '') + minutes + 'm' : 'Unknown') + '</em><br>' +
+						"<p class='runtime'>Runtime: " + (runtime ? (hours ? hours + 'h ' : '') + minutes + 'm' : 'Unknown') + '</p>' +
 
 						// Build rating stars string
 						(rating ? "<span class='stars' title='Rated: " + +(rating / 2).toFixed(1) + "/5 stars'><span style='width:" + ((rating / 2) * 16) + "px;'></span></span><br>" : '') +

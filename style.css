@@ -1,9 +1,4 @@
 body {background-color: dimgray;}
-h1 {
-	color:       lawngreen;
-	text-align:  center;
-	text-shadow: 3px 3px black;
-}
 h2.noresults {
 	background-color: maroon;
 	border-radius:    25px;
@@ -65,7 +60,22 @@ img.poster {
 	text-align:       center;
 	width:            100%;
 }
+.heading {
+	color:       lawngreen;
+	font-size:   2em;
+	font-weight: bold;
+	text-align:  center;
+	text-shadow: 3px 3px black;
+}
 .plot {text-align: left;}
+.runtime {
+    margin: auto;
+    font-style: italic;
+}
+.title {
+    font-weight: bold;
+    margin:      auto;
+}
 span.stars, span.stars > span {
     display:    inline-block;
     background: url(http://i.imgur.com/YsyS5y8.png) 0 -16px repeat-x;

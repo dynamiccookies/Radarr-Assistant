@@ -14,7 +14,7 @@
 		<title>Movie Search</title>
 	</head>
 	<body>
-        <h1>Movie Search</h1>
+        <div class='heading'>Movie Search</div><br>
         <div class='container'>
             <input type='text' id='titleInput' placeholder='Movie Title' /><button id='search'><i class='fa fa-search'></i></button>
         </div>
