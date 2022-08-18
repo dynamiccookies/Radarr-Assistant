@@ -84,6 +84,7 @@ img.poster {
 .title {
     font-weight: bold;
     margin:      auto;
+    padding:     0 10%;
 }
 span.stars, span.stars > span {
     display:    inline-block;
