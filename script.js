@@ -42,7 +42,7 @@ function searchNewMovies(search = null) {
 	// Declare/set variables
 	// 'searchTerm' equals 'search' value if not null, else get textbox value
 	// Build API URL call using 'apiUrl' and 'searchTerm', store in 'url'
-	var searchTerm = search ?? document.getElementById('titleInput').value;
+	var searchTerm = document.getElementById('titleInput').value;
 	var url        = apiUrl + '&term=' + searchTerm;
 
 	// DEBUGGING: If the 'debug' variable is TRUE, write the 'searchTerm' variable to console
