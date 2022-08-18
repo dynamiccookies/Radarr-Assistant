@@ -2,6 +2,19 @@ var maxHeight = 0;
 
 $(document).ready(function() {
 
+    // Get query string values and store in 'parm' object
+    const parm = new Proxy(new URLSearchParams(window.location.search), {get: (searchParams, prop) => searchParams.get(prop),});
+
+    // If 'search' query string parameter exists...
+    if (parm.search) {
+
+        // Set searchbox text equal to query string value
+        $('#titleInput').val(parm.search);
+
+        // Run searchNewMovies() function passing query string value as search term
+        searchNewMovies(parm.search);
+    }
+
 	// When search button is clicked, run the searchNewMovies function
 	$('#search').click(searchNewMovies);
 
@@ -20,14 +33,16 @@ $(document).ready(function() {
 	});
 });
 
-function searchNewMovies() {
+function searchNewMovies(search = null) {
 
 	// Show loading spinner on screen while search completes
 	// Pure CSS loading spinner from loading.io
 	$("#movieDetails").html("<div class='container'><div class='lds-spinner center'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>");
 
-	// Declare/set variables and build API URL string based on search term
-	var searchTerm = document.getElementById('titleInput').value;
+	// Declare/set variables
+	// 'searchTerm' equals 'search' value if not null, else get textbox value
+	// Build API URL call using 'apiUrl' and 'searchTerm', store in 'url'
+	var searchTerm = search ?? document.getElementById('titleInput').value;
 	var url        = apiUrl + '&term=' + searchTerm;
 
 	// DEBUGGING: If the 'debug' variable is TRUE, write the 'searchTerm' variable to console
