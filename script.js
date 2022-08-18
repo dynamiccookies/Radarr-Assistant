@@ -58,16 +58,17 @@ function searchNewMovies() {
 		for (var i in data) {
 
 			// Declare and set variables from results array
-			var file    = data[i].hasFile;
-			var image   = data[i].remotePoster;
-			var imdb    = data[i].imdbId;
-			var plot    = data[i].overview;
-			var rating  = data[i].ratings.value;
-			var runtime = data[i].runtime;
-			var title   = data[i].title;
-			var tmdb    = data[i].tmdbId;
-			var year    = data[i].year;
-			var youtube = data[i].youTubeTrailerId;
+			var collection = data[i].collection;
+			var file       = data[i].hasFile;
+			var image      = data[i].remotePoster;
+			var imdb       = data[i].imdbId;
+			var plot       = data[i].overview;
+			var rating     = data[i].ratings.value;
+			var runtime    = data[i].runtime;
+			var title      = data[i].title;
+			var tmdb       = data[i].tmdbId;
+			var year       = data[i].year;
+			var youtube    = data[i].youTubeTrailerId;
 
 			// Only create movie container if the IMDb AND TMDB IDs exist
 			if (imdb && tmdb) {
@@ -75,7 +76,19 @@ function searchNewMovies() {
 				// DEBUGGING: If the 'debug' variable is TRUE, 
 				if (debug) {
 					console.log('Array Item ' + i + ': ');
-					console.log({file:file, image:image, imdb:imdb, plot:plot, rating:rating, runtime:runtime, title:title, tmdb:tmdb, year:year, youtube:youtube});
+					console.log({
+					    collection : collection,
+					    file       : file,
+					    image      : image,
+					    imdb       : imdb,
+					    plot       : plot,
+					    rating     : rating,
+					    runtime    : runtime,
+					    title      : title,
+					    tmdb       : tmdb,
+					    year       : year,
+					    youtube    : youtube
+					});
 				}
 
 				// Calculate and set hours and minutes from runtime
