@@ -67,7 +67,7 @@ function searchNewMovies(search = null) {
 		}
 
 		// Reverse sort results by year - newest first
-		data.sort(function(a,b) {return a.year-b.year}).reverse();
+		data.sort(function(a,b) {return a.year - b.year}).reverse();
 
 		// Loop through array of results, 
 		for (var i in data) {
@@ -147,30 +147,9 @@ function searchNewMovies(search = null) {
 						"<p class='plot'>" + plot + '</p>' +
 					'</div>'
 				);
-
-				// Shrink movie container
-				shrink(i);
 			}
-		}
-
-        // Adjust the height of all containers to be equal
-		for (var x = 0; x <= i; x++) {
-			$('#filmID' + x).height(maxHeight);
 		}
 	}); 
 }
 
-function shrink(i) {
-	var height        = 500;
-	var minWidth      = 230;
-	var currentWidth  = $('#filmID' + i).width();
-	var currentHeight = $('#filmID' + i).height();
-
-	while (currentWidth > minWidth) {
-		$('#filmID' + i).width(currentWidth - 1);
-		currentHeight = $('#filmID' + i).height();
-		currentWidth  = $('#filmID' + i).width();
-		if (currentHeight >= height) {break;}
-	}
-	if (maxHeight < currentHeight) {maxHeight = currentHeight;}
 }

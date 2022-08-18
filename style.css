@@ -58,7 +58,8 @@ img.poster {
 	margin:           5px!important;
 	padding:          10px;
 	text-align:       center;
-	width:            100%;
+	height:           500px;
+	width:            240px;
 }
 .heading {
 	color:       lawngreen;
@@ -67,7 +68,15 @@ img.poster {
 	text-align:  center;
 	text-shadow: 3px 3px black;
 }
-.plot {text-align: left;}
+.plot {
+    text-align: left;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 9;
+    margin: 0;
+}
 .runtime {
     margin: auto;
     font-style: italic;
