@@ -30,6 +30,7 @@ img.checkmark {
 	margin-right: -42px;
 	width:         25px;
 }
+img.checkmark + p.title {padding: 0 5% 0 10%;}
 img.site {
 	height: 30px;
 	margin: 5px;
@@ -84,7 +85,6 @@ img.poster {
 .title {
     font-weight: bold;
     margin:      auto;
-    padding:     0 10%;
 }
 span.stars, span.stars > span {
     display:    inline-block;
