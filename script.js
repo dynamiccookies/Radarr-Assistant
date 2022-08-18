@@ -124,7 +124,6 @@ function searchNewMovies() {
 				shrink(i);
 			}
 		}
-		
 
         // Adjust the height of all containers to be equal
 		for (var x = 0; x <= i; x++) {

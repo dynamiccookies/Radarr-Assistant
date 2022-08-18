@@ -49,14 +49,14 @@ img.poster {
 .film {
 	background-color: gainsboro;
 	border:           2px;
-	border-color:     #0000ff;
+	border-color:     blue;
 	border-radius:    25px;
 	border-style:     solid;
 	box-shadow:       3px 3px blue;
 	display:          inline;
 	float:            left;
 	margin:           5px!important;
-	padding:          5px 5px 10px 10px;
+	padding:          10px;
 	text-align:       center;
 	width:            100%;
 }
