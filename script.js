@@ -105,7 +105,7 @@ function searchNewMovies() {
 						(file ? "<img src='img/dwcheckyes.png' title='Already in Library' class='checkmark'>" : '') +
 
 						// Build movie title string
-						"<p class='title'>" + title + (year ? ' (' + year + ')' : '') + '</p>' +
+						"<p class='title'>" + (title.substr(0, title.indexOf(':')).length > 8 ? title.replace(":", ": <br>") : title) + (year ? ' (' + year + ')' : '') + '</p>' +
 
 						// Build movie poster image string if exists, else show 'undefined' image that contains 'No Image' text
 						"<img src='" + image + "' class='poster' alt='Movie poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\">" +
