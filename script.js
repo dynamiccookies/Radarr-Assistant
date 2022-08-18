@@ -15,6 +15,9 @@ $(document).ready(function() {
         searchNewMovies(parm.search);
     }
 
+	// Increase size of search box on smaller screens
+    if ($(window).width() < 1000) $('#titleInput').width('75%');
+
 	// When search button is clicked, run the searchNewMovies function
 	$('#search').click(searchNewMovies);
 
