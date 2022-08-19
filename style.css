@@ -17,6 +17,11 @@ h2.noresults {
 	width:        75px;
 }
 #search i {font-size: 2.5em;}
+#share {
+    background: none;
+    border:     0;
+    display:    none;
+}
 #titleInput {
 	border-radius: 25px;
 	font-size:     25px;
@@ -85,6 +90,12 @@ img.poster {
 .title {
     font-weight: bold;
     margin:      auto;
+}
+.share {
+    font-size: 2em;
+    margin: 10px;
+    color: lawngreen;
+    text-shadow: 3px 3px black;
 }
 span.stars, span.stars > span {
     display:    inline-block;

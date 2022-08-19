@@ -34,9 +34,27 @@ $(document).ready(function() {
 			searchNewMovies();
 		}
 	});
+
+    // Run the share() function when the share icon is clicked
+    $('#share').click(function(){
+
+        // Declare/set variables from address bar and build share URL with search box text
+        var host       = window.location.host;
+        var port       = window.location.port;
+        var protocol   = window.location.protocol;
+        var path       = window.location.pathname;
+        var searchTerm = document.getElementById('titleInput').value;
+        var shareUrl   = protocol + '//' + host + (port ? ':' + port : '') + path + '?search=' + encodeURIComponent(searchTerm);
+
+        // Prompt share URL to screen for user
+        prompt('Copy this URL to share:', shareUrl);
+    });
 });
 
 function searchNewMovies(search = null) {
+
+    // Show share button icon when results are found
+    $('#share').css('display','none');
 
 	// Show loading spinner on screen while search completes
 	// Pure CSS loading spinner from loading.io
@@ -126,7 +144,7 @@ function searchNewMovies(search = null) {
 						"<p class='title'>" + (title.substr(0, title.indexOf(':')).length > 8 ? title.replace(":", ": <br>") : title) + (year ? ' (' + year + ')' : '') + '</p>' +
 
 						// Build movie poster image string if exists, else show 'undefined' image that contains 'No Image' text
-						"<img src='" + image + "' class='poster' alt='Movie poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\">" +
+						"<img src='" + image + "' class='poster' alt='Movie Poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\">" +
 
 						// Build runtime string
 						"<p class='runtime'>Runtime: " + (runtime ? (hours ? hours + 'h ' : '') + minutes + 'm' : 'Unknown') + '</p>' +
@@ -168,6 +186,9 @@ function searchNewMovies(search = null) {
 				$('#filmID' + i + ' .plot').css('-webkit-line-clamp', lines);
 			}
 		}
+
+        // Show share button icon when results are found
+        $('#share').css('display','inline');
 	}); 
 }
 
