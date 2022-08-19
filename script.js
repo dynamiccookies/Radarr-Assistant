@@ -150,6 +150,22 @@ function searchNewMovies(search = null) {
 						"<p class='plot'>" + plot + '</p>' +
 					'</div>'
 				);
+
+				// Declare variables to get movie title line height for determining number of lines for plot
+				// 'lines' holds the -webkit-line-clamp value set in the switch
+				// 'clientHeight' holds the title element's height value
+				var lines;
+				var clientHeight = $('#filmID' + i + ' .title')[0].clientHeight;
+
+				// Set 'lines' variable based on line height - Each line in title is ~20
+				if      (clientHeight < 30) {lines = "10";}
+				else if (clientHeight < 50) {lines = "9";}
+				else if (clientHeight < 70) {lines = "8";}
+				else if (clientHeight < 90) {lines = "7";}
+				else                        {lines = "6";}
+
+				// Set number of lines for plot            
+				$('#filmID' + i + ' .plot').css('-webkit-line-clamp', lines);
 			}
 		}
 	}); 
