@@ -131,10 +131,6 @@ function searchNewMovies(search = null) {
 					});
 				}
 
-				// Calculate and set hours and minutes from runtime
-				var minutes = runtime % 60;
-				var hours   = (runtime - minutes) / 60;
-
 				// Build HTML container with movie details and append container to screen
 				$('#movieDetails').append(
 
