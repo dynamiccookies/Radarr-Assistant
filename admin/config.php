@@ -8,6 +8,6 @@
 
 	// Set '$protocol' based on '$https' value
 	$https ? $protocol = 'https' : $protocol = 'http';
-	
+
 	// The php variable '$apiUrl' is passed to the JavaScript 'apiUrl' variable in index.php
 	$apiUrl = $protocol . '://' . $ip . ':' . $port . '/api/v3/movie/lookup?apikey=' . $apiKey;

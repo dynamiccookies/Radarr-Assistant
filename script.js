@@ -88,7 +88,7 @@ function searchNewMovies(search = null) {
 		}
 
 		// Reverse sort results by year - newest first
-		data.sort(function(a,b) {return a.year - b.year}).reverse();
+		data.sort(function(a,b) {return a.year-b.year}).reverse();
 
 		// Loop through array of results, 
 		for (var i in data) {
@@ -113,17 +113,17 @@ function searchNewMovies(search = null) {
 				if (debug) {
 					console.log('Array Item ' + i + ': ');
 					console.log({
-					    collection : collection,
-					    file       : file,
-					    image      : image,
-					    imdb       : imdb,
-					    plot       : plot,
-					    rating     : rating,
-					    runtime    : runtime,
-					    title      : title,
-					    tmdb       : tmdb,
-					    year       : year,
-					    youtube    : youtube
+						collection :collection,
+						file       :file,
+						image      :image,
+						imdb       :imdb,
+						plot       :plot,
+						rating     :rating,
+						runtime    :runtime,
+						title      :title,
+						tmdb       :tmdb,
+						year       :year,
+						youtube    :youtube
 					});
 				}
 
@@ -187,9 +187,7 @@ function searchNewMovies(search = null) {
 			}
 		}
 
-        // Show share button icon when results are found
-        $('#share').css('display','inline');
-	}); 
-}
-
+		// Show share button icon when results are found
+		$('#share').css('display','inline');
+	});
 }
