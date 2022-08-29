@@ -107,6 +107,7 @@ function searchNewMovies(search = null) {
 			var runtime    = data[i].runtime;
 			var title      = data[i].title;
 			var tmdb       = data[i].tmdbId;
+			var votes      = data[i].ratings.votes;
 			var year       = data[i].year;
 			var youtube    = data[i].youTubeTrailerId;
 
@@ -126,6 +127,7 @@ function searchNewMovies(search = null) {
 						runtime    :runtime,
 						title      :title,
 						tmdb       :tmdb,
+						votes      :votes,
 						year       :year,
 						youtube    :youtube
 					});
@@ -150,7 +152,7 @@ function searchNewMovies(search = null) {
 						"<p class='runtime'>Runtime: " + calcRuntime(runtime) + '</p>' +
 
 						// Build rating stars string
-						(rating ? "<span class='stars' title='Rated: " + +(rating / 2).toFixed(1) + "/5 stars'><span style='width:" + ((rating / 2) * 16) + "px;'></span></span><br>" : '') +
+						(rating ? "<span class='stars' title='Rated: " + +(rating / 2).toFixed(1) + '/5 stars - ' + votes.toLocaleString('en-US') + " votes'><span style='width:" + ((rating / 2) * 16) + "px;'></span></span><br>" : '') +
 
 						// Build Plex image link string
 						(file ? "<a href='https://app.plex.tv/desktop/#!/search?query=" + searchTerm + "' target='_blank' title='Find Movie on Plex'><img src='img/plex_small.png' alt='Plex logo' class='site'></a>" : '') +
