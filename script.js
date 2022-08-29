@@ -151,7 +151,7 @@ function searchNewMovies(search = null) {
 						"<img src='" + image + "' class='poster' alt='Movie Poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\">" +
 
 						// Build runtime string
-						"<p class='runtime'>Runtime: " + (runtime ? (hours ? hours + 'h ' : '') + minutes + 'm' : 'Unknown') + '</p>' +
+						"<p class='runtime'>Runtime: " + calcRuntime(runtime) + '</p>' +
 
 						// Build rating stars string
 						(rating ? "<span class='stars' title='Rated: " + +(rating / 2).toFixed(1) + "/5 stars'><span style='width:" + ((rating / 2) * 16) + "px;'></span></span><br>" : '') +
@@ -198,4 +198,24 @@ function searchNewMovies(search = null) {
 		// Show share button icon when results are found
 		$('#share').css('display','inline');
 	});
+}
+
+function calcRuntime(runtime) {
+
+    // If runtime exists...
+    if (runtime) {
+
+    	// Calculate and set hours and minutes from runtime
+    	var minutes = runtime % 60;
+    	var hours   = (runtime - minutes) / 60;
+
+        // If hours is greater than 0, build hours in '1h' format
+        if (hours) {hours = hours + 'h ';}
+        else {hours = '';}
+
+        // Return runtime string in '1h23m' format
+        return hours + minutes + 'm';
+
+    // Else return 'Unknown'
+    } else {return 'Unknown';}
 }
