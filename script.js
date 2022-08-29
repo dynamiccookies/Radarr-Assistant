@@ -48,6 +48,11 @@ $(document).ready(function() {
         // Prompt share URL to screen for user
         prompt('Copy this URL to share:', shareUrl);
     });
+
+    if (movie_added !== '') {
+        if (movie_added) {alert('Movie added successfully!');}
+        else {alert('ERROR: Please contact the administrator.');}
+    }
 });
 
 function searchNewMovies(search = null) {
@@ -61,9 +66,9 @@ function searchNewMovies(search = null) {
 
 	// Declare/set variables
 	// 'searchTerm' equals 'search' value if not null, else get textbox value
-	// Build API URL call using 'apiUrl' and 'searchTerm', store in 'url'
+	// Build API URL call using 'radarrApiUrl' and 'searchTerm', store in 'url'
 	var searchTerm = document.getElementById('titleInput').value;
-	var url        = apiUrl + '&term=' + searchTerm;
+	var url        = radarrApiUrl + '&term=' + searchTerm;
 
 	// DEBUGGING: If the 'debug' variable is TRUE, write the 'searchTerm' variable to console
 	if (debug) console.log('Search Term: ' + searchTerm);
@@ -163,7 +168,11 @@ function searchNewMovies(search = null) {
 						// Build YouTube trailer link string
 						(youtube ? "<a href='https://youtu.be/" + youtube + "' target='_blank' title='Movie Trailer'><img src='img/youtube_small.png' alt='YouTube logo' class='site'></a>" : '') +
 
-//						"<input type='button' value='" + exists + " Movie' id='" + imdb + "' onClick='add(this.id)' />" +
+                        // Build add_movie submit button and hidden input values
+                        "<form method='post'><input class='addmovie' type='submit' name='add_movie' value='Add Movie'/>" + 
+                        "<input type='hidden' id='tmdbId' name='tmdbId' value='" + tmdb + "'><input type='hidden' id='title' name='title' value='" + title + "'></form>" +
+
+                        // Build plot text
 						"<p class='plot'>" + plot + '</p>' +
 					'</div>'
 				);

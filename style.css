@@ -9,6 +9,7 @@ h2.noresults {
 	text-align:       center;
 	width:            75%;
 }
+#movieDetails {padding: 0 10%;}
 #search {
 	background: none;
 	border:       0;
@@ -44,6 +45,15 @@ img.poster {
 	height: 200px;
 	margin: 10px 10px 0 10px;
 }
+.addmovie {
+    background-color: lawngreen;
+    border:           1px solid black;
+    border-radius:    5px;
+    padding:          5px 10px;
+    font-weight:      bold;
+    box-shadow:       3px 3px black;
+    margin-bottom:    10px;
+}
 .center {
 	display:      block;
 	margin-left:  auto;
@@ -64,7 +74,7 @@ img.poster {
 	margin:           5px!important;
 	padding:          10px;
 	text-align:       center;
-	height:           500px;
+	height:           535px;
 	width:            240px;
 }
 .heading {
