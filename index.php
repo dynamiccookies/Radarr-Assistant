@@ -5,7 +5,7 @@
 
     if (isset($_POST['add_movie']) && isset($_POST['tmdbId']) && isset($_POST['title'])) {
         include 'add_movie.php';
-        $movie_added = add_movie($radarr_api_url, $ifttt_api_key, $ifttt_event, $_POST['tmdbId'], $_POST['title']);
+        $movie_added = add_movie($radarr_api_key, $ifttt_api_key, $ifttt_event, $_POST['tmdbId'], $_POST['title']);
     }
 ?>
 <!doctype html>
