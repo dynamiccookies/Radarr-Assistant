@@ -98,6 +98,7 @@ function searchNewMovies(search = null) {
 		for (var i in data) {
 
 			// Declare and set variables from results array
+			var added      = data[i].added;
 			var collection = data[i].collection;
 			var file       = data[i].hasFile;
 			var image      = data[i].remotePoster;
@@ -118,6 +119,7 @@ function searchNewMovies(search = null) {
 				if (debug) {
 					console.log('Array Item ' + i + ': ');
 					console.log({
+						added      :added,
 						collection :collection,
 						file       :file,
 						image      :image,
@@ -166,9 +168,11 @@ function searchNewMovies(search = null) {
 						// Build YouTube trailer link string
 						(youtube ? "<a href='https://youtu.be/" + youtube + "' target='_blank' title='Movie Trailer'><img src='img/youtube_small.png' alt='YouTube logo' class='site'></a>" : '') +
 
-                        // Build add_movie submit button and hidden input values
-                        "<form method='post'><input class='addmovie' type='submit' name='add_movie' value='Add Movie'/>" + 
-                        "<input type='hidden' id='tmdbId' name='tmdbId' value='" + tmdb + "'><input type='hidden' id='title' name='title' value='" + title + "'></form>" +
+                        // Build movie button and hidden input values
+                        "<form method='post'>" + movieButton(added, file, tmdb) + 
+                        "<input type='hidden' id='searchTerm' name='searchTerm' value='" + searchTerm + "'>" +
+                        "<input type='hidden' id='title' name='title' value='" + title + "'>" +
+                        "<input type='hidden' id='tmdbId' name='tmdbId' value='" + tmdb + "'></form>" +
 
                         // Build plot text
 						"<p class='plot'>" + plot + '</p>' +
@@ -216,4 +220,30 @@ function calcRuntime(runtime) {
 
     // Else return 'Unknown'
     } else {return 'Unknown';}
+}
+function movieButton(added, file, tmdb) {
+
+    var buttonHTML = '';
+    
+    // If 'added' date is greater than 0001-01-01, movie exists in queue or library
+    added  = (added > '1/1/0001' ? true : false);
+
+    // If movie has been added to the queue AND NOT downloaded to the library...
+    if (added && !file) {
+        buttonHTML = "<input type='submit' class='movie-queue movie-button' name='movie_queue' value='Movie in Queue' disabled/>";
+
+    // If movie has been added to the queue AND downloaded to the library...
+    } else if (added && file) {
+        buttonHTML = "<input type='submit' class='movie-readd movie-button' name='readd_movie' value='Re-Add Movie' />";
+
+    // Else if movie has NOT been added to the queue AND NOT downloaded to the library...
+    } else if (!added && !file) {
+        buttonHTML = "<input type='submit' class='movie-add movie-button' name='add_movie' value='Add Movie' />";
+
+    // DEBUGGING: Otherwise display error to console if debug mode is enabled
+    } else {
+        if (debug) console.log('Movie Button Error: added=' + added + ' file=' + file);
+    }
+
+    return buttonHTML;
 }

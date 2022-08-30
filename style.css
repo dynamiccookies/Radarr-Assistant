@@ -45,15 +45,6 @@ img.poster {
 	height: 200px;
 	margin: 10px 10px 0 10px;
 }
-.addmovie {
-    background-color: lawngreen;
-    border:           1px solid black;
-    border-radius:    5px;
-    padding:          5px 10px;
-    font-weight:      bold;
-    box-shadow:       3px 3px black;
-    margin-bottom:    10px;
-}
 .center {
 	display:      block;
 	margin-left:  auto;
@@ -83,6 +74,23 @@ img.poster {
 	font-weight: bold;
 	text-align:  center;
 	text-shadow: 3px 3px black;
+}
+.movie-add, .movie-readd {
+    background-color: lawngreen;
+    cursor:           pointer;
+}
+.movie-button {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    box-shadow: 3px 3px black;
+    margin-bottom: 10px;
+}
+.movie-queue {
+    background-color: yellow;
+    color:            black!important;
+    cursor:           none;
 }
 .plot {
     text-align: left;
