@@ -2,10 +2,14 @@
     include 'admin/config.php';
 
     $movie_added = null;
+    $search_term = null;
+    $tmdb_id     = null;
 
     if (isset($_POST['add_movie']) && isset($_POST['tmdbId']) && isset($_POST['title'])) {
         include 'add_movie.php';
         $movie_added = add_movie($radarr_api_key, $ifttt_api_key, $ifttt_event, $_POST['tmdbId'], $_POST['title']);
+        $search_term = $_POST['searchTerm'];
+        $tmdb_id     = $_POST['tmdbId'];
     }
 ?>
 <!doctype html>
@@ -20,6 +24,8 @@
 			var radarrApiUrl = '<?=$radarr_api_url?>';
 			var debug        = '<?=$debug?>';
 			var movieAdded   = '<?=$movie_added?>';
+			var searchTerm   = '<?=$search_term?>';
+			var tmdbId       = '<?=$tmdb_id?>';
 		</script>
 		<script src='script.js'></script>
 		<title>Movie Search</title>

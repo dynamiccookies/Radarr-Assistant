@@ -5,14 +5,14 @@ $(document).ready(function() {
     // Get query string values and store in 'parm' object
     const parm = new Proxy(new URLSearchParams(window.location.search), {get: (searchParams, prop) => searchParams.get(prop),});
 
-    // If 'search' query string parameter exists...
-    if (parm.search) {
+    // If 'search' query string parameter exists OR 'searchTerm' exists...
+    if (parm.search || searchTerm) {
 
-        // Set searchbox text equal to query string value
-        $('#titleInput').val(parm.search);
+        // Set searchbox text equal to 'searchTerm' if it exists, else use query string value
+        $('#titleInput').val((searchTerm ? searchTerm : parm.search));
 
-        // Run searchNewMovies() function passing query string value as search term
-        searchNewMovies(parm.search);
+        // Run searchNewMovies() function passing 'searchTerm' if it exists, else query string value as search term
+        searchNewMovies((searchTerm ? searchTerm : parm.search));
     }
 
     if ($(window).width() < 1000) $('#titleInput').width('65%');
@@ -228,8 +228,8 @@ function movieButton(added, file, tmdb) {
     // If 'added' date is greater than 0001-01-01, movie exists in queue or library
     added  = (added > '1/1/0001' ? true : false);
 
-    // If movie has been added to the queue AND NOT downloaded to the library...
-    if (added && !file) {
+    // If current movie object equals tmdbId global variable OR movie has been added to the queue AND NOT downloaded to the library...
+    if ((tmdb == tmdbId) || (added && !file)) {
         buttonHTML = "<input type='submit' class='movie-queue movie-button' name='movie_queue' value='Movie in Queue' disabled/>";
 
     // If movie has been added to the queue AND downloaded to the library...
