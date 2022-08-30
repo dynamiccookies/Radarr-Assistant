@@ -49,8 +49,8 @@ $(document).ready(function() {
         prompt('Copy this URL to share:', shareUrl);
     });
 
-    if (movie_added !== '') {
-        if (movie_added) {alert('Movie added successfully!');}
+    if (movieAdded !== '') {
+        if (movieAdded) {alert('Movie added successfully!');}
         else {alert('ERROR: Please contact the administrator.');}
     }
 });

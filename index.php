@@ -19,7 +19,7 @@
 		<script>
 			var radarrApiUrl = '<?=$radarr_api_url?>';
 			var debug        = '<?=$debug?>';
-			var movie_added  = '<?=$movie_added?>';
+			var movieAdded   = '<?=$movie_added?>';
 		</script>
 		<script src='script.js'></script>
 		<title>Movie Search</title>
