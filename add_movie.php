@@ -23,6 +23,6 @@
 
         curl_close($curl);
 
-        if (substr($response, 0, strlen($query)) === $query) {return TRUE;}
-        else {return FALSE;}
+        if (substr($response, 0, strlen($query)) === $query) {return true;}
+        else {return false;}
     }
