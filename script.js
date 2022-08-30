@@ -103,6 +103,7 @@ function searchNewMovies(search = null) {
 			var file       = data[i].hasFile;
 			var image      = data[i].remotePoster;
 			var imdb       = data[i].imdbId;
+			var movieId    = (data[i].id !== undefined ? data[i].id : '');
 			var plot       = data[i].overview;
 			var rating     = data[i].ratings.value;
 			var runtime    = data[i].runtime;
@@ -124,6 +125,7 @@ function searchNewMovies(search = null) {
 						file       :file,
 						image      :image,
 						imdb       :imdb,
+						movieId    :movieId,
 						plot       :plot,
 						rating     :rating,
 						runtime    :runtime,
@@ -170,6 +172,7 @@ function searchNewMovies(search = null) {
 
                         // Build movie button and hidden input values
                         "<form method='post'>" + movieButton(added, file, tmdb) + 
+                        "<input type='hidden' id='movieId' name='movieId' value='" + movieId + "'>" +
                         "<input type='hidden' id='searchTerm' name='searchTerm' value='" + searchTerm + "'>" +
                         "<input type='hidden' id='title' name='title' value='" + title + "'>" +
                         "<input type='hidden' id='tmdbId' name='tmdbId' value='" + tmdb + "'></form>" +
@@ -223,6 +226,7 @@ function calcRuntime(runtime) {
 }
 function movieButton(added, file, tmdb) {
 
+    // Declare and set blank the 'buttonHTML' variable to hold the <input> element
     var buttonHTML = '';
     
     // If 'added' date is greater than 0001-01-01, movie exists in queue or library
@@ -230,7 +234,7 @@ function movieButton(added, file, tmdb) {
 
     // If current movie object equals tmdbId global variable OR movie has been added to the queue AND NOT downloaded to the library...
     if ((tmdb == tmdbId) || (added && !file)) {
-        buttonHTML = "<input type='submit' class='movie-queue movie-button' name='movie_queue' value='Movie in Queue' disabled/>";
+        buttonHTML = "<input type='submit' class='movie-queue movie-button' name='queue_movie' value='Searching for Movie' disabled/>";
 
     // If movie has been added to the queue AND downloaded to the library...
     } else if (added && file) {
@@ -240,10 +244,11 @@ function movieButton(added, file, tmdb) {
     } else if (!added && !file) {
         buttonHTML = "<input type='submit' class='movie-add movie-button' name='add_movie' value='Add Movie' />";
 
-    // DEBUGGING: Otherwise display error to console if debug mode is enabled
+    // DEBUGGING: Else, if the 'debug' variable is TRUE, write error to console
     } else {
         if (debug) console.log('Movie Button Error: added=' + added + ' file=' + file);
     }
 
+    // Return the created <input> element from the function
     return buttonHTML;
 }

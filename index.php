@@ -6,8 +6,14 @@
     $tmdb_id     = null;
 
     if (isset($_POST['add_movie']) && isset($_POST['tmdbId']) && isset($_POST['title'])) {
-        include 'add_movie.php';
-        $movie_added = add_movie($radarr_api_key, $ifttt_api_key, $ifttt_event, $_POST['tmdbId'], $_POST['title']);
+        include 'functions.php';
+        $movie_added = ifttt_api($ifttt_api_key, 'movie_added', $radarr_api_key, $_POST['tmdbId'], $_POST['title']);
+        $search_term = $_POST['searchTerm'];
+        $tmdb_id     = $_POST['tmdbId'];
+    }
+    if (isset($_POST['readd_movie']) && isset($_POST['movieId'])) {
+        include 'functions.php';
+        $movie_added = ifttt_api($ifttt_api_key, 'movie_readded', $radarr_api_key, $_POST['movieId']);
         $search_term = $_POST['searchTerm'];
         $tmdb_id     = $_POST['tmdbId'];
     }

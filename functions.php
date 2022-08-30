@@ -1,8 +1,8 @@
 <?php
-    function add_movie($radarr_api_key, $ifttt_api_key, $ifttt_event, $tmdbid, $title) {
+    function ifttt_api($ifttt_api_key, $ifttt_event, $value1 = null, $value2 = null, $value3 = null) {
 
 		$query  = 'Congratulations!';
-        $values = '{"value1":"' . $radarr_api_key . '","value2":"' . $tmdbid . '","value3":"' . $title . '"}';
+        $values = '{"value1":"' . $value1 . '","value2":"' . $value2 . '","value3":"' . $value3 . '"}';
 
         $curl = curl_init();
 
