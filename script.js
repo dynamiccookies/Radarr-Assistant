@@ -2,20 +2,20 @@ var maxHeight = 0;
 
 $(document).ready(function() {
 
-    // Get query string values and store in 'parm' object
-    const parm = new Proxy(new URLSearchParams(window.location.search), {get: (searchParams, prop) => searchParams.get(prop),});
+	// Get query string values and store in 'parm' object
+	const parm = new Proxy(new URLSearchParams(window.location.search), {get: (searchParams, prop) => searchParams.get(prop),});
 
-    // If 'search' query string parameter exists OR 'searchTerm' exists...
-    if (parm.search || searchTerm) {
+	// If 'search' query string parameter exists OR 'searchTerm' exists...
+	if (parm.search || searchTerm) {
 
-        // Set searchbox text equal to 'searchTerm' if it exists, else use query string value
-        $('#titleInput').val((searchTerm ? searchTerm : parm.search));
+		// Set searchbox text equal to 'searchTerm' if it exists, else use query string value
+		$('#titleInput').val((searchTerm ? searchTerm : parm.search));
 
-        // Run searchNewMovies() function passing 'searchTerm' if it exists, else query string value as search term
-        searchNewMovies((searchTerm ? searchTerm : parm.search));
-    }
+		// Run searchNewMovies() function passing 'searchTerm' if it exists, else query string value as search term
+		searchNewMovies((searchTerm ? searchTerm : parm.search));
+	}
 
-    if ($(window).width() < 1000) $('#titleInput').width('65%');
+	if ($(window).width() < 1000) $('#titleInput').width('65%');
 
 	// When search button is clicked, run the searchNewMovies function
 	$('#search').click(searchNewMovies);
@@ -34,35 +34,35 @@ $(document).ready(function() {
 		}
 	});
 
-    // Run the share() function when the share icon is clicked
-    $('#share').click(function(){
+	// Run the share() function when the share icon is clicked
+	$('#share').click(function(){
 
-        // Declare/set variables from address bar and build share URL with search box text
-        var host       = window.location.host;
-        var port       = window.location.port;
-        var protocol   = window.location.protocol;
-        var path       = window.location.pathname;
-        var searchTerm = document.getElementById('titleInput').value;
-        var shareUrl   = protocol + '//' + host + (port ? ':' + port : '') + path + '?search=' + encodeURIComponent(searchTerm);
+		// Declare/set variables from address bar and build share URL with search box text
+		var host       = window.location.host;
+		var port       = window.location.port;
+		var protocol   = window.location.protocol;
+		var path       = window.location.pathname;
+		var searchTerm = document.getElementById('titleInput').value;
+		var shareUrl   = protocol + '//' + host + (port ? ':' + port : '') + path + '?search=' + encodeURIComponent(searchTerm);
 
-        // Prompt share URL to screen for user
-        prompt('Copy this URL to share:', shareUrl);
-    });
+		// Prompt share URL to screen for user
+		prompt('Copy this URL to share:', shareUrl);
+	});
 
-    if (movieAdded !== '') {
-        if (movieAdded) {alert('Movie added successfully!');}
-        else {alert('ERROR: Please contact the administrator.');}
-    }
+	if (movieAdded !== '') {
+		if (movieAdded) {alert('Movie added successfully!');}
+		else {alert('ERROR: Please contact the administrator.');}
+	}
 });
 
 function searchNewMovies(search = null) {
 
-    // Show share button icon when results are found
-    $('#share').css('display','none');
+	// Show share button icon when results are found
+	$('#share').css('display','none');
 
 	// Show loading spinner on screen while search completes
 	// Pure CSS loading spinner from loading.io
-	$("#movieDetails").html("<div class='container'><div class='lds-spinner center'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>");
+	$('#movieDetails').html("<div class='container'><div class='lds-spinner center'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>");
 
 	// Declare/set variables
 	// 'searchTerm' equals 'search' value if not null, else get textbox value
@@ -170,14 +170,14 @@ function searchNewMovies(search = null) {
 						// Build YouTube trailer link string
 						(youtube ? "<a href='https://youtu.be/" + youtube + "' target='_blank' title='Movie Trailer'><img src='img/youtube_small.png' alt='YouTube logo' class='site'></a>" : '') +
 
-                        // Build movie button and hidden input values
-                        "<form method='post'>" + movieButton(added, file, tmdb) + 
-                        "<input type='hidden' id='movieId' name='movieId' value='" + movieId + "'>" +
-                        "<input type='hidden' id='searchTerm' name='searchTerm' value='" + searchTerm + "'>" +
-                        "<input type='hidden' id='title' name='title' value='" + title + "'>" +
-                        "<input type='hidden' id='tmdbId' name='tmdbId' value='" + tmdb + "'></form>" +
+						// Build movie button and hidden input values
+						"<form method='post'>" + movieButton(added, file, tmdb) + 
+						"<input type='hidden' id='movieId' name='movieId' value='" + movieId + "'>" +
+						"<input type='hidden' id='searchTerm' name='searchTerm' value='" + searchTerm + "'>" +
+						"<input type='hidden' id='title' name='title' value='" + title + "'>" +
+						"<input type='hidden' id='tmdbId' name='tmdbId' value='" + tmdb + "'></form>" +
 
-                        // Build plot text
+						// Build plot text
 						"<p class='plot'>" + plot + '</p>' +
 					'</div>'
 				);
@@ -207,48 +207,48 @@ function searchNewMovies(search = null) {
 
 function calcRuntime(runtime) {
 
-    // If runtime exists...
-    if (runtime) {
+	// If runtime exists...
+	if (runtime) {
 
-    	// Calculate and set hours and minutes from runtime
-    	var minutes = runtime % 60;
-    	var hours   = (runtime - minutes) / 60;
+		// Calculate and set hours and minutes from runtime
+		var minutes = runtime % 60;
+		var hours   = (runtime - minutes) / 60;
 
-        // If hours is greater than 0, build hours in '1h' format
-        if (hours) {hours = hours + 'h ';}
-        else {hours = '';}
+		// If hours is greater than 0, build hours in '1h ' format
+		if (hours) {hours = hours + 'h ';}
+		else {hours = '';}
 
-        // Return runtime string in '1h23m' format
-        return hours + minutes + 'm';
+		// Return runtime string in '1h 23m' format or '45m' if less than one hour
+		return hours + minutes + 'm';
 
-    // Else return 'Unknown'
-    } else {return 'Unknown';}
+	// Else return 'Unknown'
+	} else {return 'Unknown';}
 }
 function movieButton(added, file, tmdb) {
 
-    // Declare and set blank the 'buttonHTML' variable to hold the <input> element
-    var buttonHTML = '';
-    
-    // If 'added' date is greater than 0001-01-01, movie exists in queue or library
-    added  = (added > '1/1/0001' ? true : false);
+	// Declare and set blank the 'buttonHTML' variable to hold the <input> element
+	var buttonHTML = '';
 
-    // If current movie object equals tmdbId global variable OR movie has been added to the queue AND NOT downloaded to the library...
-    if ((tmdb == tmdbId) || (added && !file)) {
-        buttonHTML = "<input type='submit' class='movie-queue movie-button' name='queue_movie' value='Searching for Movie' disabled/>";
+	// If 'added' date is greater than 0001-01-01, movie exists in queue or library
+	added  = (added > '1/1/0001' ? true : false);
 
-    // If movie has been added to the queue AND downloaded to the library...
-    } else if (added && file) {
-        buttonHTML = "<input type='submit' class='movie-readd movie-button' name='readd_movie' value='Re-Add Movie' />";
+	// If current movie object equals tmdbId global variable OR movie has been added to the queue AND NOT downloaded to the library...
+	if ((tmdb == tmdbId) || (added && !file)) {
+		buttonHTML = "<input type='submit' class='movie-queue movie-button' name='queue_movie' value='Searching for Movie' disabled/>";
 
-    // Else if movie has NOT been added to the queue AND NOT downloaded to the library...
-    } else if (!added && !file) {
-        buttonHTML = "<input type='submit' class='movie-add movie-button' name='add_movie' value='Add Movie' />";
+	// If movie has been added to the queue AND downloaded to the library...
+	} else if (added && file) {
+		buttonHTML = "<input type='submit' class='movie-readd movie-button' name='readd_movie' value='Re-Add Movie' />";
 
-    // DEBUGGING: Else, if the 'debug' variable is TRUE, write error to console
-    } else {
-        if (debug) console.log('Movie Button Error: added=' + added + ' file=' + file);
-    }
+	// Else if movie has NOT been added to the queue AND NOT downloaded to the library...
+	} else if (!added && !file) {
+		buttonHTML = "<input type='submit' class='movie-add movie-button' name='add_movie' value='Add Movie' />";
 
-    // Return the created <input> element from the function
-    return buttonHTML;
+	// DEBUGGING: Else, if the 'debug' variable is TRUE, write error to console
+	} else {
+		if (debug) console.log('Movie Button Error: added=' + added + ' file=' + file);
+	}
+
+	// Return the created <input> element from the function
+	return buttonHTML;
 }
