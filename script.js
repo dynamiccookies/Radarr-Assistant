@@ -68,7 +68,7 @@ function searchNewMovies(search = null) {
 	// 'searchTerm' equals 'search' value if not null, else get textbox value
 	// Build API URL call using 'radarrApiUrl' and 'searchTerm', store in 'url'
 	var searchTerm = document.getElementById('titleInput').value;
-	var url        = radarrApiUrl + '&term=' + searchTerm;
+	var url        = atob(radarrApiUrl) + '&term=' + searchTerm;
 
 	// DEBUGGING: If the 'debug' variable is TRUE, write the 'searchTerm' variable to console
 	if (debug) console.log('Search Term: ' + searchTerm);

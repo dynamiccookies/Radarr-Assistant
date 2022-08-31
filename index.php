@@ -27,7 +27,7 @@
 		<link rel='stylesheet' href='style.css'>
 		<script src='http://code.jquery.com/jquery-latest.min.js'></script>
 		<script>
-			var radarrApiUrl = '<?=$radarr_api_url?>';
+			var radarrApiUrl = '<?=base64_encode($radarr_api_url)?>';
 			var debug        = '<?=$debug?>';
 			var movieAdded   = '<?=$movie_added?>';
 			var searchTerm   = '<?=$search_term?>';
