@@ -49,7 +49,7 @@ $(document).ready(function() {
 		prompt('Copy this URL to share:', shareUrl);
 	});
 
-	$('#movieDetails').on('click', '.plot', function(){alert($(this).text());})
+	$('#movieDetails').on('click', '.plot', function(){alert($(this).text());});
 
 	if (movieAdded !== '') {
 		if (movieAdded) {alert('Movie added successfully!');}
@@ -59,13 +59,6 @@ $(document).ready(function() {
 
 function searchNewMovies(search = null) {
 
-	// Show share button icon when results are found
-	$('#share').css('display','none');
-
-	// Show loading spinner on screen while search completes
-	// Pure CSS loading spinner from loading.io
-	$('#movieDetails').html("<div class='container'><div class='lds-spinner center'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>");
-
 	// Declare/set variables
 	// 'searchTerm' equals 'search' value if not null, else get textbox value
 	// Build API URL call using 'radarrApiUrl' and 'searchTerm', store in 'url'
@@ -74,6 +67,13 @@ function searchNewMovies(search = null) {
 
 	// DEBUGGING: If the 'debug' variable is TRUE, write the 'searchTerm' variable to console
 	if (debug) console.log('Search Term: ' + searchTerm);
+
+	// Show loading spinner on screen while search completes
+	// Pure CSS loading spinner from loading.io
+	$('#movieDetails').html("<div class='container'><div class='lds-spinner center'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>");
+
+	// Show share button icon when results are found
+	$('#share').css('display','none');
 
 	// Call API to retreive data
 	$.getJSON(url, function(data) {
@@ -174,10 +174,10 @@ function searchNewMovies(search = null) {
 
 						// Build movie button and hidden input values
 						"<form method='post'>" + movieButton(added, file, tmdb) + 
-						"<input type='hidden' id='movieId' name='movieId' value='" + movieId + "'>" +
+						"<input type='hidden' id='movieId'    name='movieId'    value='" + movieId + "'>" +
 						"<input type='hidden' id='searchTerm' name='searchTerm' value='" + searchTerm + "'>" +
-						"<input type='hidden' id='title' name='title' value='" + title + "'>" +
-						"<input type='hidden' id='tmdbId' name='tmdbId' value='" + tmdb + "'></form>" +
+						"<input type='hidden' id='title'      name='title'      value='" + title + "'>" +
+						"<input type='hidden' id='tmdbId'     name='tmdbId'     value='" + tmdb + "'></form>" +
 
 						// Build plot text
 						"<p class='plot' title='Click to view full plot'>" + plot + '</p>' +

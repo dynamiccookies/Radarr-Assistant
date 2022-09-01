@@ -45,9 +45,9 @@ img.site {
 	margin: 5px;
 }
 img.poster {
-	border-radius: 5px;
-	height:        200px;
-	margin:        10px 10px 0 10px;
+    border-radius: 5px;
+    height:        200px;
+    margin:        10px 10px 0 10px;
 }
 .center {
 	display:      block;
@@ -59,10 +59,8 @@ img.poster {
 .container {text-align: center;}
 .film {
 	background-color: gainsboro;
-	border:           2px;
-	border-color:     blue;
+	border:           2px solid blue;
 	border-radius:    25px;
-	border-style:     solid;
 	box-shadow:       3px 3px blue;
 	display:          inline;
 	float:            left;
