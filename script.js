@@ -180,7 +180,7 @@ function searchNewMovies(search = null) {
 						"<input type='hidden' id='tmdbId' name='tmdbId' value='" + tmdb + "'></form>" +
 
 						// Build plot text
-						"<p class='plot'>" + plot + '</p>' +
+						"<p class='plot' title='Click to view full plot'>" + plot + '</p>' +
 					'</div>'
 				);
 
