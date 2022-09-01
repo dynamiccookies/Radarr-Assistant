@@ -49,6 +49,8 @@ $(document).ready(function() {
 		prompt('Copy this URL to share:', shareUrl);
 	});
 
+	$('#movieDetails').on('click', '.plot', function(){alert($(this).text());})
+
 	if (movieAdded !== '') {
 		if (movieAdded) {alert('Movie added successfully!');}
 		else {alert('ERROR: Please contact the administrator.');}
