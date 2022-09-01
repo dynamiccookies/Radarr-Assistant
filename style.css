@@ -1,4 +1,7 @@
-body {background-color: dimgray;}
+body {
+    background-color: dimgray;
+    font-family:      Arial, Helvetica, sans-serif;
+}
 h2.noresults {
 	background-color: maroon;
 	border-radius:    25px;
@@ -42,8 +45,9 @@ img.site {
 	margin: 5px;
 }
 img.poster {
-	height: 200px;
-	margin: 10px 10px 0 10px;
+	border-radius: 5px;
+	height:        200px;
+	margin:        10px 10px 0 10px;
 }
 .center {
 	display:      block;
