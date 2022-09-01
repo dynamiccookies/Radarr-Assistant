@@ -23,6 +23,11 @@
         $issue_submitted = ifttt_api($ifttt_api_key, 'issue', $_POST['subject'], $_POST['details']);
         $search_term     = $_POST['form_search_term'];
     }
+
+    if ($movie_added) {
+        $log_record = date('Y-m-d H:i:s') . ',' . $_SERVER['REMOTE_ADDR'] . ',' . $search_term . ',' . $tmdb_id . ',' . $_POST['title'];
+        file_put_contents('admin/log.txt', $log_record.PHP_EOL, FILE_APPEND | LOCK_EX);
+    }
 ?>
 <!doctype html>
 <html>
