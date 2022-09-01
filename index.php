@@ -37,13 +37,15 @@
 		<title>Movie Search</title>
 	</head>
 	<body>
-        <div class='heading'>Movie Search</div><br>
-        <div class='container'>
-            <input type='text' id='titleInput' placeholder='Movie Title' />
-            <button id='search'><i class='fa fa-search'></i></button>
-            <button id='share'><i class='fa fa-share share' title='Share Search Results'></i></button>
-        </div>
-		<hr>
+	    <div class='header'>
+            <div class='heading' id='heading'>Movie Search</div><br>
+            <div class='container'>
+                <input type='text' id='titleInput' placeholder='Movie Title' />
+                <button id='search'><i class='fa fa-search'></i></button>
+                <button id='share'><i class='fa fa-share share' title='Share Search Results'></i></button>
+            </div>
+    		<hr>
+		</div>
 		<div id='movieDetails'></div>
 	</body>
 </html>
