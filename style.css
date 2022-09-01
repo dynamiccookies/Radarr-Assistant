@@ -144,6 +144,53 @@ img.poster {
 	font-weight: bold;
 }
 
+/* Issue/Request Form */
+label {font-weight:bold;}
+.issue-report {
+    color:           white;
+    cursor:          pointer;
+    font-size:       .75em;
+    margin:          5px 15px 0 0;
+    text-align:      right;
+    text-decoration: underline;
+}
+.issue-button {
+    border:        1px solid black;
+    border-radius: 5px;
+    box-shadow:    3px 3px black;
+    color:         white;
+    cursor:        pointer;
+    font-weight:   bold;
+    margin:        0 10px;
+    padding:       16px 20px;
+    width:         40%;
+}
+.issue-close {background-color: red;}
+.issue-submit {background-color: #04AA6D;}
+.form-container {
+    background-color: gainsboro;
+    border:           3px solid blue;
+    border-radius:    25px;
+    box-shadow:       3px 3px blue;
+    box-sizing:       border-box;
+    display:          none;
+    max-width:        300px;
+    padding:          20px;
+    position:         fixed;
+    right:            5px;
+    top:              5px;
+    z-index:          9;
+}
+.input {
+    background:    #f1f1f1;
+    border:        none;
+    border-radius: 5px;
+    box-sizing:    border-box;
+    margin:        5px 0 22px 0;
+    padding:       15px;
+    width:         100%;
+}
+
 /* LOADING.IO PURE CSS SPINNER */
 .lds-spinner {
   color: official;

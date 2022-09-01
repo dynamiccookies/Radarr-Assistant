@@ -68,6 +68,9 @@ function searchNewMovies(search = null) {
 	// DEBUGGING: If the 'debug' variable is TRUE, write the 'searchTerm' variable to console
 	if (debug) console.log('Search Term: ' + searchTerm);
 
+    // Set hidden input value to 'searchTerm'
+    $('#form_search_term').val(searchTerm);
+
 	// Show loading spinner on screen while search completes
 	// Pure CSS loading spinner from loading.io
 	$('#movieDetails').html("<div class='container'><div class='lds-spinner center'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>");
