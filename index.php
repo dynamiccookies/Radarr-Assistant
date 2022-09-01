@@ -25,7 +25,8 @@
     }
 
     if ($movie_added) {
-        $log_record = date('Y-m-d H:i:s') . ',' . $_SERVER['REMOTE_ADDR'] . ',' . $search_term . ',' . $tmdb_id . ',' . $_POST['title'];
+		date_default_timezone_set('America/Chicago');
+        $log_record = date('Y-m-d H:i:s') . '|' . $_SERVER['REMOTE_ADDR'] . '|' . $search_term . '|' . $tmdb_id . '|' . $_POST['title'];
         file_put_contents('admin/log.txt', $log_record.PHP_EOL, FILE_APPEND | LOCK_EX);
     }
 ?>
