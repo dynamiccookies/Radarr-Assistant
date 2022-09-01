@@ -7,19 +7,19 @@
     $tmdb_id         = null;
 
     if (isset($_POST['add_movie']) && isset($_POST['tmdbId']) && isset($_POST['title'])) {
-        include 'functions.php';
+        include 'files/functions.php';
         $movie_added = ifttt_api($ifttt_api_key, 'movie_added', $radarr_api_key, $_POST['tmdbId'], $_POST['title']);
         $search_term = $_POST['searchTerm'];
         $tmdb_id     = $_POST['tmdbId'];
     }
     if (isset($_POST['readd_movie']) && isset($_POST['movieId'])) {
-        include 'functions.php';
+        include 'files/functions.php';
         $movie_added = ifttt_api($ifttt_api_key, 'movie_readded', $radarr_api_key, $_POST['movieId']);
         $search_term = $_POST['searchTerm'];
         $tmdb_id     = $_POST['tmdbId'];
     }
     if (isset($_POST['submit_issue'])) {
-        include 'functions.php';
+        include 'files/functions.php';
         $issue_submitted = ifttt_api($ifttt_api_key, 'issue', $_POST['subject'], $_POST['details']);
         $search_term     = $_POST['form_search_term'];
     }
@@ -36,9 +36,9 @@
 		<meta charset='utf-8'>
 		<meta name='viewport' content='width=device-width, initial-scale=1'>
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-		<link rel='stylesheet' href='style.css'>
+		<link rel='stylesheet' href='files/style.css'>
 		<script src='http://code.jquery.com/jquery-latest.min.js'></script>
-		<script src='script.js'></script>
+		<script src='files/script.js'></script>
 		<script>
 			var radarrApiUrl = '<?=base64_encode($radarr_api_url)?>';
 			var debug        = '<?=$debug?>';
