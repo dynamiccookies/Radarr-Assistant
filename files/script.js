@@ -62,8 +62,15 @@ function searchNewMovies(search = null) {
 	// Declare/set variables
 	// 'searchTerm' equals 'search' value if not null, else get textbox value
 	// Build API URL call using 'radarrApiUrl' and 'searchTerm', store in 'url'
-	var searchTerm = document.getElementById('titleInput').value;
-	var url        = atob(radarrApiUrl) + '&term=' + searchTerm;
+	var errorMessage = "<h2 class='noresults'>No Results Found - Please try changing your search criteria</h2>";
+	var searchTerm   = document.getElementById('titleInput').value;
+	var url          = atob(radarrApiUrl) + '&term=' + searchTerm;
+
+    // Check if 'searchTerm' has value and return error message if false
+	if (!searchTerm) {
+		$('#movieDetails').html(errorMessage);
+		return;
+	}
 
 	// DEBUGGING: If the 'debug' variable is TRUE, write the 'searchTerm' variable to console
 	if (debug) console.log('Search Term: ' + searchTerm);
@@ -92,7 +99,7 @@ function searchNewMovies(search = null) {
 
 		// Check for results from API, return error if none
 		if (!data.length) {
-			$('#movieDetails').html("<h2 class='noresults'>No Results Found - Please try changing your search criteria</h2>");
+			$('#movieDetails').html(errorMessage);
 			return;
 		}
 
