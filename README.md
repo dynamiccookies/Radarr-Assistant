@@ -1,7 +1,7 @@
 # Radarr-Assistant
 ![GitHub](https://img.shields.io/github/license/dynamiccookies/Radarr-Assistant?style=for-the-badge "License")
 ![GitHub Release Date](https://img.shields.io/github/release-date/dynamiccookies/Radarr-Assistant?style=for-the-badge "Release Date")
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/dynamiccookies/Radarr-Assistant?style=for-the-badge "Release Version")
+![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/dynamiccookies/radarr-assistant?display_name=tag&include_prereleases&sort=semver&style=for-the-badge "Release Version")
 
 A webpage integrated with Radarr's API that allows users to search for movies, verify movies currently in the Radarr library, and add new movies to Radarr's queue all without giving direct access to Radarr itself. 
 
