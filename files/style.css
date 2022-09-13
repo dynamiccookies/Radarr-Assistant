@@ -1,6 +1,6 @@
 body {
-    background-color: dimgray;
-    font-family:      Arial, Helvetica, sans-serif;
+	background-color: dimgray;
+	font-family:      Arial, Helvetica, sans-serif;
 }
 hr {margin-bottom: 0;}
 h2.noresults {
@@ -14,8 +14,8 @@ h2.noresults {
 	width:            75%;
 }
 #movieDetails {
-    padding:    0 10%;
-    margin-top: 150px;
+	padding:    0 10%;
+	margin-top: 150px;
 }
 #search {
 	background: none;
@@ -26,9 +26,9 @@ h2.noresults {
 }
 #search i {font-size: 2.5em;}
 #share {
-    background: none;
-    border:     0;
-    display:    none;
+	background: none;
+	border:     0;
+	display:    none;
 }
 #titleInput {
 	border-radius: 25px;
@@ -36,12 +36,6 @@ h2.noresults {
 	padding:       10px 20px;
 	text-align:    center;
 	width:         50%;
-}
-.header {
-    background-color: dimgray;
-    position:         fixed;
-    top:              0;
-    width:            100%;
 }
 img.checkmark {
 	float:         left;
@@ -55,9 +49,9 @@ img.site {
 	margin: 5px;
 }
 img.poster {
-    border-radius: 5px;
-    height:        200px;
-    margin:        10px 10px 0 10px;
+	border-radius: 5px;
+	height:        200px;
+	margin:        10px 10px 0 10px;
 }
 .center {
 	display:      block;
@@ -80,6 +74,12 @@ img.poster {
 	height:           535px;
 	width:            240px;
 }
+.header {
+	background-color: dimgray;
+	position:         fixed;
+	top:              0;
+	width:            100%;
+}
 .heading {
 	color:       lawngreen;
 	font-size:   2em;
@@ -88,56 +88,56 @@ img.poster {
 	text-shadow: 3px 3px black;
 }
 .movie-add, .movie-readd {
-    background-color: lawngreen;
-    cursor:           pointer;
+	background-color: lawngreen;
+	cursor:           pointer;
 }
 .movie-button {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-weight: bold;
-    box-shadow: 3px 3px black;
-    margin-bottom: 10px;
+	border:        1px solid black;
+	border-radius: 5px;
+	box-shadow:    3px 3px black;
+	font-weight:   bold;
+	margin-bottom: 10px;
+	padding:       5px 10px;
 }
 .movie-queue {
-    background-color: yellow;
-    color:            black!important;
-    cursor:           none;
+	background-color: yellow;
+	color:            black!important;
+	cursor:           none;
 }
 .plot {
-    text-align: left;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 9;
-    margin: 0;
+	display:           -webkit-box;
+	margin:             0;
+	overflow:           hidden;
+	text-align:         left;
+	text-overflow:      ellipsis;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 9;
 }
 .runtime {
-    margin: auto;
-    font-style: italic;
+	font-style: italic;
+	margin:     auto;
 }
 .title {
-    font-weight: bold;
-    margin:      auto;
+	font-weight: bold;
+	margin:      auto;
 }
 .share {
-    font-size: 2em;
-    margin: 10px;
-    color: lawngreen;
-    text-shadow: 3px 3px black;
+	color:       lawngreen;
+	font-size:   2em;
+	margin:      10px;
+	text-shadow: 3px 3px black;
 }
 .stars, .stars > * {
-    display:    inline-block;
-    background: url(http://i.imgur.com/YsyS5y8.png) 0 -16px repeat-x;
-    width:      80px;
-    height:     16px;
-    margin:     auto;
+	background: url(http://i.imgur.com/YsyS5y8.png) 0 -16px repeat-x;
+	display:    inline-block;
+	height:     16px;
+	margin:     auto;
+	width:      80px;
 }
 .stars > * {
-    max-width:           80px;
-    background-position: 0 0;
-    margin-right:        80px;
+	background-position: 0 0;
+	margin-right:        80px;
+	max-width:           80px;
 }
 .trailer {
 	font-size:   1.1em;
@@ -147,49 +147,50 @@ img.poster {
 /* Issue/Request Form */
 label {font-weight:bold;}
 .issue-report {
-    color:           white;
-    cursor:          pointer;
-    font-size:       .75em;
-    margin:          5px 15px 0 0;
     text-align:      right;
-    text-decoration: underline;
+	color:           white;
+	cursor:          pointer;
+	font-size:       .75em;
+	margin:          5px 15px 0 0;
+	text-decoration: underline;
 }
 .issue-button {
-    border:        1px solid black;
-    border-radius: 5px;
-    box-shadow:    3px 3px black;
-    color:         white;
-    cursor:        pointer;
-    font-weight:   bold;
-    margin:        0 10px;
-    padding:       16px 20px;
-    width:         40%;
+	border:        1px solid black;
+	border-radius: 5px;
+	box-shadow:    3px 3px black;
+	color:         white;
+	cursor:        pointer;
+	font-weight:   bold;
+	margin:        0 10px;
+	padding:       16px 20px;
+	width:         40%;
 }
-.issue-close {background-color: red;}
+.issue-close  {background-color: red;}
 .issue-submit {background-color: #04AA6D;}
 .form-container {
-    background-color: gainsboro;
-    border:           3px solid blue;
-    border-radius:    25px;
-    box-shadow:       3px 3px blue;
-    box-sizing:       border-box;
-    display:          none;
-    max-width:        300px;
-    padding:          20px;
-    position:         fixed;
-    right:            5px;
-    top:              5px;
-    z-index:          9;
+	background-color: gainsboro;
+	border:           3px solid blue;
+	border-radius:    25px;
+	box-shadow:       3px 3px blue;
+	box-sizing:       border-box;
+	display:          none;
+	max-width:        300px;
+	padding:          20px;
+	position:         fixed;
+	right:            5px;
+	top:              5px;
+	z-index:          9;
 }
 .input {
-    background:    #f1f1f1;
-    border:        none;
-    border-radius: 5px;
-    box-sizing:    border-box;
-    margin:        5px 0 22px 0;
-    padding:       15px;
-    width:         100%;
+	background:    #f1f1f1;
+	border:        none;
+	border-radius: 5px;
+	box-sizing:    border-box;
+	margin:        5px 0 22px 0;
+	padding:       15px;
+	width:         100%;
 }
+
 
 /* LOADING.IO PURE CSS SPINNER */
 .lds-spinner {

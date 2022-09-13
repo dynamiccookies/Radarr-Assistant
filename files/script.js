@@ -66,7 +66,7 @@ function searchNewMovies(search = null) {
 	var searchTerm   = document.getElementById('titleInput').value;
 	var url          = atob(radarrApiUrl) + '&term=' + searchTerm;
 
-    // Check if 'searchTerm' has value and return error message if false
+	// Check if 'searchTerm' has value and return error message if false
 	if (!searchTerm) {
 		$('#movieDetails').html(errorMessage);
 		return;
@@ -75,8 +75,8 @@ function searchNewMovies(search = null) {
 	// DEBUGGING: If the 'debug' variable is TRUE, write the 'searchTerm' variable to console
 	if (debug) console.log('Search Term: ' + searchTerm);
 
-    // Set hidden input value to 'searchTerm'
-    $('#form_search_term').val(searchTerm);
+	// Set hidden input value to 'searchTerm'
+	$('#form_search_term').val(searchTerm);
 
 	// Show loading spinner on screen while search completes
 	// Pure CSS loading spinner from loading.io
@@ -95,7 +95,7 @@ function searchNewMovies(search = null) {
 		}
 
 		// Clear loading spinner from screen
-		$("#movieDetails").empty();
+		$('#movieDetails').empty();
 
 		// Check for results from API, return error if none
 		if (!data.length) {
@@ -104,26 +104,26 @@ function searchNewMovies(search = null) {
 		}
 
 		// Reverse sort results by year - newest first
-		data.sort(function(a,b) {return a.year-b.year}).reverse();
+		data.sort(function(a, b) {return a.year - b.year}).reverse();
 
 		// Loop through array of results, 
 		for (var i in data) {
 
-			// Declare and set variables from results array
-			var added      = data[i].added;
-			var collection = data[i].collection;
-			var file       = data[i].hasFile;
-			var image      = data[i].remotePoster;
-			var imdb       = data[i].imdbId;
+			// Declare and set variables from results array object i
+			var added      =  data[i].added;
+			var collection =  data[i].collection;
+			var file       =  data[i].hasFile;
+			var image      =  data[i].remotePoster;
+			var imdb       =  data[i].imdbId;
 			var movieId    = (data[i].id !== undefined ? data[i].id : '');
-			var plot       = data[i].overview;
-			var rating     = data[i].ratings.value;
-			var runtime    = data[i].runtime;
-			var title      = data[i].title;
-			var tmdb       = data[i].tmdbId;
-			var votes      = data[i].ratings.votes;
-			var year       = data[i].year;
-			var youtube    = data[i].youTubeTrailerId;
+			var plot       =  data[i].overview;
+			var rating     =  data[i].ratings.value;
+			var runtime    =  data[i].runtime;
+			var title      =  data[i].title;
+			var tmdb       =  data[i].tmdbId;
+			var votes      =  data[i].ratings.votes;
+			var year       =  data[i].year;
+			var youtube    =  data[i].youTubeTrailerId;
 
 			// Only create movie container if the IMDb AND TMDB IDs exist
 			if (imdb && tmdb) {
@@ -132,20 +132,20 @@ function searchNewMovies(search = null) {
 				if (debug) {
 					console.log('Array Item ' + i + ': ');
 					console.log({
-						added      :added,
-						collection :collection,
-						file       :file,
-						image      :image,
-						imdb       :imdb,
-						movieId    :movieId,
-						plot       :plot,
-						rating     :rating,
-						runtime    :runtime,
-						title      :title,
-						tmdb       :tmdb,
-						votes      :votes,
-						year       :year,
-						youtube    :youtube
+						added      : added,
+						collection : collection,
+						file       : file,
+						image      : image,
+						imdb       : imdb,
+						movieId    : movieId,
+						plot       : plot,
+						rating     : rating,
+						runtime    : runtime,
+						title      : title,
+						tmdb       : tmdb,
+						votes      : votes,
+						year       : year,
+						youtube    : youtube
 					});
 				}
 
@@ -162,7 +162,7 @@ function searchNewMovies(search = null) {
 						"<p class='title'>" + (title.substr(0, title.indexOf(':')).length > 8 ? title.replace(":", ": <br>") : title) + (year ? ' (' + year + ')' : '') + '</p>' +
 
 						// Build movie poster image string if exists, else show 'undefined' image that contains 'No Image' text
-						"<img src='" + image + "' class='poster' alt='Movie Poster' title='Movie Poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\">" +
+						"<img src='" + image + "' class='poster' alt='Movie Poster' title='Movie poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\">" +
 
 						// Build runtime string
 						"<p class='runtime'>Runtime: " + calcRuntime(runtime) + '</p>' +
@@ -236,6 +236,7 @@ function calcRuntime(runtime) {
 	// Else return 'Unknown'
 	} else {return 'Unknown';}
 }
+
 function movieButton(added, file, tmdb) {
 
 	// Declare and set blank the 'buttonHTML' variable to hold the <input> element
