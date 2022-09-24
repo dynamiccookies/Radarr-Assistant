@@ -1,5 +1,3 @@
-var maxHeight = 0;
-
 $(document).ready(function() {
 
 	// Get query string values and store in 'parm' object
@@ -15,6 +13,7 @@ $(document).ready(function() {
 		searchNewMovies((searchTerm ? searchTerm : parm.search));
 	}
 
+	// If the screen width is less than 1000px, decrease the search box width to 65% so the share button won't wrap to a new line
 	if ($(window).width() < 1000) $('#titleInput').width('65%');
 
 	// When search button is clicked, run the searchNewMovies function
@@ -109,7 +108,7 @@ function searchNewMovies(search = null) {
 		// Loop through array of results, 
 		for (var i in data) {
 
-			// Declare and set variables from results array object i
+			// Declare and set variables from results array object data[i]
 			var added      =  data[i].added;
 			var collection =  data[i].collection;
 			var file       =  data[i].hasFile;
@@ -128,7 +127,7 @@ function searchNewMovies(search = null) {
 			// Only create movie container if the IMDb AND TMDB IDs exist
 			if (imdb && tmdb) {
 
-				// DEBUGGING: If the 'debug' variable is TRUE, 
+				// DEBUGGING: If the 'debug' variable is TRUE, log all array items to console
 				if (debug) {
 					console.log('Array Item ' + i + ': ');
 					console.log({
@@ -167,10 +166,10 @@ function searchNewMovies(search = null) {
 						// Build runtime string
 						"<p class='runtime'>Runtime: " + calcRuntime(runtime) + '</p>' +
 
-						// Build rating stars string
+						// Build rating stars string if rating exists
 						(rating ? "<span class='stars' title='Rated: " + +(rating / 2).toFixed(1) + '/5 stars - ' + votes.toLocaleString('en-US') + " votes'><span style='width:" + ((rating / 2) * 16) + "px;'></span></span><br>" : '') +
 
-						// Build Plex image link string
+						// Build Plex image link string if file exists in library
 						(file ? "<a href='https://app.plex.tv/desktop/#!/search?query=" + searchTerm + "' target='_blank' title='Find Movie on Plex'><img src='img/plex_small.png' alt='Plex logo' class='site'></a>" : '') +
 
 						// Build IMDb image link string
@@ -179,7 +178,7 @@ function searchNewMovies(search = null) {
 						// Build TMDB image link string
 						"<a href='https://www.themoviedb.org/movie/" + tmdb + "' target='_blank' title='The Movie Database'><img src='img/tmdb_small.png' alt='TMDB logo' class='site'></a>" +
 
-						// Build YouTube trailer link string
+						// Build YouTube trailer link string if YouTube trailer exists
 						(youtube ? "<a href='https://youtu.be/" + youtube + "' target='_blank' title='Movie Trailer'><img src='img/youtube_small.png' alt='YouTube logo' class='site'></a>" : '') +
 
 						// Build movie button and hidden input values
@@ -195,12 +194,12 @@ function searchNewMovies(search = null) {
 				);
 
 				// Declare variables to get movie title line height for determining number of lines for plot
-				// 'lines' holds the -webkit-line-clamp value set in the switch
+				// 'lines' holds the -webkit-line-clamp value set in the if/else
 				// 'clientHeight' holds the title element's height value
 				var lines;
 				var clientHeight = $('#filmID' + i + ' .title')[0].clientHeight;
 
-				// Set 'lines' variable based on line height - Each line in title is ~20
+				// Set 'lines' variable based on title height - Each line in title is ~20
 				if      (clientHeight < 30) {lines = "10";}
 				else if (clientHeight < 50) {lines = "9";}
 				else if (clientHeight < 70) {lines = "8";}
@@ -213,7 +212,7 @@ function searchNewMovies(search = null) {
 		}
 
 		// Show share button icon when results are found
-		$('#share').css('display','inline');
+		$('#share').css('display', 'inline');
 	});
 }
 
