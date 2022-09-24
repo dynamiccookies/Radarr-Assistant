@@ -61,6 +61,10 @@ img.poster {
 }
 .checkmark + strong {margin-left: 25px;}
 .container {text-align: center;}
+.date {
+	color:       navy;
+	font-weight: bold;
+}
 .film {
 	background-color: gainsboro;
 	border:           2px solid blue;
@@ -113,7 +117,7 @@ img.poster {
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 9;
 }
-.runtime {
+.release, .runtime {
 	font-style: italic;
 	margin:     auto;
 }

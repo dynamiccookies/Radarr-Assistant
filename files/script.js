@@ -111,6 +111,8 @@ function searchNewMovies(search = null) {
 			// Declare and set variables from results array object data[i]
 			var added      =  data[i].added;
 			var collection =  data[i].collection;
+			var disc       = (data[i].physicalRelease !== undefined ? data[i].physicalRelease : '');
+			var digital    = (data[i].digitalRelease !== undefined ? data[i].digitalRelease : '');
 			var file       =  data[i].hasFile;
 			var image      =  data[i].remotePoster;
 			var imdb       =  data[i].imdbId;
@@ -118,6 +120,7 @@ function searchNewMovies(search = null) {
 			var plot       =  data[i].overview;
 			var rating     =  data[i].ratings.value;
 			var runtime    =  data[i].runtime;
+			var theater    = (data[i].inCinemas !== undefined ? data[i].inCinemas : '');
 			var title      =  data[i].title;
 			var tmdb       =  data[i].tmdbId;
 			var votes      =  data[i].ratings.votes;
@@ -133,6 +136,8 @@ function searchNewMovies(search = null) {
 					console.log({
 						added      : added,
 						collection : collection,
+						disc       : disc,
+						digital    : digital,
 						file       : file,
 						image      : image,
 						imdb       : imdb,
@@ -140,6 +145,7 @@ function searchNewMovies(search = null) {
 						plot       : plot,
 						rating     : rating,
 						runtime    : runtime,
+						theater    : theater,
 						title      : title,
 						tmdb       : tmdb,
 						votes      : votes,
@@ -147,6 +153,9 @@ function searchNewMovies(search = null) {
 						youtube    : youtube
 					});
 				}
+
+				// Run the calcReleaseDate() function, passing the three release dates (theater, disc, digital), and store resulting date in 'release' variable
+				var release = calcReleaseDate(theater, disc, digital);
 
 				// Build HTML container with movie details and append container to screen
 				$('#movieDetails').append(
@@ -160,11 +169,14 @@ function searchNewMovies(search = null) {
 						// Build movie title string
 						"<p class='title'>" + (title.substr(0, title.indexOf(':')).length > 8 ? title.replace(":", ": <br>") : title) + (year ? ' (' + year + ')' : '') + '</p>' +
 
-						// Build movie poster image string if exists, else show 'undefined' image that contains 'No Image' text
-						"<img src='" + image + "' class='poster' alt='Movie Poster' title='Movie poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\">" +
+						// Build movie poster image string if exists, else show 'undefined' image that contains 'No Image' text - Include empty <div> to force new line after poster
+						"<img src='" + image + "' class='poster' alt='Movie Poster' title='Movie poster' onerror=\"this.onerror=null;this.src='img/undefined.png';\"><div class='newline'></div>" +
 
-						// Build runtime string
-						"<p class='runtime'>Runtime: " + calcRuntime(runtime) + '</p>' +
+						// Build runtime string if runtime is greater than 0
+						(runtime ? "<p class='runtime'>Runtime: " + calcRuntime(runtime) + '</p>' : '') +
+
+						// Build release date string if release date is greater than today - Include coundown to date if date is less than or equal to 90 days from today (account for day vs days when only one day away)
+						(release ? "<p class='release'" + (release.countdown <= 90 ? " title='" + release.countdown + " day" + (release.countdown == 1 ? '' : 's') + "!'" : '') + ">Release Date: <span class='date'>" + release.releaseDate + '</span></p>' : '') +
 
 						// Build rating stars string if rating exists
 						(rating ? "<span class='stars' title='Rated: " + +(rating / 2).toFixed(1) + '/5 stars - ' + votes.toLocaleString('en-US') + " votes'><span style='width:" + ((rating / 2) * 16) + "px;'></span></span><br>" : '') +
@@ -216,24 +228,52 @@ function searchNewMovies(search = null) {
 	});
 }
 
+function calcReleaseDate(cinemas, physical, digital) {
+
+	// If any of the three release dates exists...
+	if (cinemas || physical || digital) {
+
+		// Declare and build 'dates' array variable with data values formatted as date types (replace invalid dates with max allowed JavaScript date)
+		var dates   = [
+			(new Date(physical) == 'Invalid Date' ? new Date(8640000000000000) : new Date(physical)),
+			(new Date(digital)  == 'Invalid Date' ? new Date(8640000000000000) : new Date(digital)),
+			(new Date(cinemas)  == 'Invalid Date' ? new Date(8640000000000000) : new Date(cinemas))
+		];
+
+		// Declare and build object of date formatting options for toLocaleDateString() function
+		var options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+
+		// Declare and set today's date
+		var today   = new Date();
+
+		// Sort 'dates' array so that oldest date is first
+		dates.sort((a, b) => a - b);
+
+		// Declare and set 'releaseDate' to first item in 'dates' array (oldest date)
+		var releaseDate = dates[0];
+
+		// Declare and set 'countdown' to number of days from now until release date (calculated from milliseconds)
+		var countdown   = Math.ceil(Math.abs(today - releaseDate) / (1000 * 60 * 60 * 24));
+
+		// If 'releaseDate' is greater than today, return object with release date as string and countdown until release date in days, else return null
+		return (releaseDate > today ? {releaseDate:releaseDate.toLocaleDateString('en-US', options), countdown:countdown} : null);
+
+	// If no release dates exist (all three are undefined), return null
+	} else {return null;}
+}
+
 function calcRuntime(runtime) {
 
-	// If runtime exists...
-	if (runtime) {
+	// Calculate and set hours and minutes from runtime
+	var minutes = runtime % 60;
+	var hours   = (runtime - minutes) / 60;
 
-		// Calculate and set hours and minutes from runtime
-		var minutes = runtime % 60;
-		var hours   = (runtime - minutes) / 60;
+	// If hours is greater than 0, build hours in '1h ' format
+	if (hours) {hours = hours + 'h ';}
+	else       {hours = '';}
 
-		// If hours is greater than 0, build hours in '1h ' format
-		if (hours) {hours = hours + 'h ';}
-		else {hours = '';}
-
-		// Return runtime string in '1h 23m' format or '45m' if less than one hour
-		return hours + minutes + 'm';
-
-	// Else return 'Unknown'
-	} else {return 'Unknown';}
+	// Return runtime string in '1h 23m' format or '45m' if less than one hour
+	return hours + minutes + 'm';
 }
 
 function movieButton(added, file, tmdb) {
