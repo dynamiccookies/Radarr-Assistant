@@ -195,10 +195,10 @@ function searchNewMovies(search = null) {
 
 						// Build movie button and hidden input values
 						"<form method='post'>" + movieButton(added, file, tmdb) + 
-						"<input type='hidden' id='movieId'    name='movieId'    value='" + movieId + "'>" +
-						"<input type='hidden' id='searchTerm' name='searchTerm' value='" + searchTerm + "'>" +
-						"<input type='hidden' id='title'      name='title'      value='" + title + "'>" +
-						"<input type='hidden' id='tmdbId'     name='tmdbId'     value='" + tmdb + "'></form>" +
+						"<input type='hidden' id='movieId'    name='movieId'    value='"  + movieId    + "'>" +
+						"<input type='hidden' id='searchTerm' name='searchTerm' value=\"" + searchTerm + "\">" +
+						"<input type='hidden' id='title'      name='title'      value=\"" + title      + "\">" +
+						"<input type='hidden' id='tmdbId'     name='tmdbId'     value='"  + tmdb       + "'></form>" +
 
 						// Build plot text
 						"<p class='plot' title='Click to view full plot'>" + plot + '</p>' +
