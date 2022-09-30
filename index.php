@@ -58,11 +58,11 @@
 		<script src='http://code.jquery.com/jquery-latest.min.js'></script>
 		<script src='files/script.js'></script>
 		<script>
-			var radarrApiUrl = '<?=base64_encode($radarr_api_url)?>';
-			var debug        = '<?=$debug?>';
-			var movieAdded   = '<?=$movie_added?>';
-			var searchTerm   = '<?=$search_term?>';
-			var tmdbId       = '<?=$tmdb_id?>';
+			const debug        = '<?=$debug?>';
+			const movieAdded   = '<?=$movie_added?>';
+			const radarrApiUrl = '<?=base64_encode($radarr_api_url)?>';
+			let   searchTerm   = '<?=$search_term?>';
+			const tmdbId       = '<?=$tmdb_id?>';
 		</script>
 		<title>Movie Search</title>
 	</head>
