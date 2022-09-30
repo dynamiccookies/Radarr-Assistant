@@ -1,5 +1,6 @@
 <?php 
 	include 'admin/config.php';
+	include 'files/functions.php';
 
 	// Declare and set global PHP variables
 	$installed_version = 'v0.1.0-alpha';
@@ -11,9 +12,6 @@
 	// If the add_movie button was pressed and it included a movie tmdbId and title...
 	if (isset($_POST['add_movie']) && isset($_POST['tmdbId']) && isset($_POST['title'])) {
 
-		// Include the function.php file that includes the ifttt_api() function
-		include 'files/functions.php';
-
 		// Invoke the ifttt_api() function, passing data to add a new movie - Returns true or false
 		$movie_added = ifttt_api($ifttt_api_key, 'movie_added', $radarr_api_key, $_POST['tmdbId'], $_POST['title']);
 		$search_term = $_POST['searchTerm'];
@@ -23,9 +21,6 @@
 	// If the readd_movie button was pressed and it included a movie tmdbId...
 	if (isset($_POST['readd_movie']) && isset($_POST['movieId'])) {
 
-		// Include the function.php file that includes the ifttt_api() function
-		include 'files/functions.php';
-
 		// Invoke the ifttt_api() function, passing data to readd a movie - Returns true or false
 		$movie_added = ifttt_api($ifttt_api_key, 'movie_readded', $radarr_api_key, $_POST['movieId']);
 		$search_term = $_POST['searchTerm'];
@@ -34,9 +29,6 @@
 
 	// If the submit_issue button was pressed...
 	if (isset($_POST['submit_issue'])) {
-
-		// Include the function.php file that includes the ifttt_api() function
-		include 'files/functions.php';
 
 		// Invoke the ifttt_api() function, passing data to post an issue to GitHub - Returns true or false
 		$issue_submitted = ifttt_api($ifttt_api_key, 'issue', $_POST['subject'], $_POST['details']);
