@@ -1,11 +1,12 @@
 <?php 
 	include 'admin/config.php';
 
-	// Declare and set null global PHP variables
-	$issue_submitted = null;
-	$movie_added     = null;
-	$search_term     = null;
-	$tmdb_id         = null;
+	// Declare and set global PHP variables
+	$installed_version = 'v0.1.0-alpha';
+	$issue_submitted   = null;
+	$movie_added       = null;
+	$search_term       = null;
+	$tmdb_id           = null;
 
 	// If the add_movie button was pressed and it included a movie tmdbId and title...
 	if (isset($_POST['add_movie']) && isset($_POST['tmdbId']) && isset($_POST['title'])) {
@@ -75,6 +76,7 @@
 	</head>
 	<body>
 		<div class='header'>
+			<div class='version'><a href='https://github.com/dynamiccookies/Radarr-Assistant/releases/tag/<?=$installed_version?>' target='_blank'><?=$installed_version?></a></div>
 			<div class='issue-report' onclick="document.getElementById('issueForm').style.display='block';">Report Issue</div>
 			<div class='heading' id='heading'>Movie Search</div><br>
 			<div class='container'>

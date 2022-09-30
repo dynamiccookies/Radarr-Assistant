@@ -85,6 +85,7 @@ img.poster {
 	width:            100%;
 }
 .heading {
+	clear:       both;
 	color:       lawngreen;
 	font-size:   2em;
 	font-weight: bold;
@@ -147,13 +148,20 @@ img.poster {
 	font-size:   1.1em;
 	font-weight: bold;
 }
+.version {
+	color:      white;
+	float:      left;
+	font-size: .75em;
+	margin:     5px 15px 0 0;
+}
+.version a:link, .version a:active, .version a:visited, .version a:hover {color: white;}
 
 /* Issue/Request Form */
 label {font-weight:bold;}
 .issue-report {
-    text-align:      right;
 	color:           white;
 	cursor:          pointer;
+	float:           right;
 	font-size:       .75em;
 	margin:          5px 15px 0 0;
 	text-decoration: underline;
