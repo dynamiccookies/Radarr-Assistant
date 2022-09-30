@@ -5,9 +5,11 @@
 	// Declare and set global PHP variables
 	$installed_version = 'v0.1.1-alpha';
 	$issue_submitted   = null;
+	$latest_version    = get_latest_version();
 	$movie_added       = null;
 	$search_term       = null;
 	$tmdb_id           = null;
+	$upgrade_needed    = version_compare($latest_version->tag, $installed_version, '>');
 
 	// If the add_movie button was pressed and it included a movie tmdbId and title...
 	if (isset($_POST['add_movie']) && isset($_POST['tmdbId']) && isset($_POST['title'])) {
