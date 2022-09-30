@@ -3,7 +3,7 @@
 	include 'files/functions.php';
 
 	// Declare and set global PHP variables
-	$installed_version = 'v0.1.0-alpha';
+	$installed_version = 'v0.1.1-alpha';
 	$issue_submitted   = null;
 	$movie_added       = null;
 	$search_term       = null;
