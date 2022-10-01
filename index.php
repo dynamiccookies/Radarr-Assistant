@@ -77,7 +77,7 @@
 			<div class='issue-report' onclick="document.getElementById('issueForm').style.display='block';">Report Issue</div>
 			<div class='heading' id='heading'>Movie Search</div><br>
 			<div class='container'>
-				<input type='text' id='titleInput' placeholder='Movie Title' />
+				<input type='text' id='titleInput' placeholder='Movie Title' accesskey='M' autofocus>
 				<button id='search'><i class='fa fa-search'></i></button>
 				<button id='share'><i class='fa fa-share share' title='Share Search Results'></i></button>
 			</div>
