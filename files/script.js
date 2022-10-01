@@ -176,7 +176,7 @@ function searchNewMovies(search = null) {
 						(runtime ? "<p class='runtime'>Runtime: " + calcRuntime(runtime) + '</p>' : '') +
 
 						// Build release date string if release date is greater than today - Include coundown to date if date is less than or equal to 90 days from today (account for day vs days when only one day away)
-						(release ? "<p class='release'" + (release.countdown <= 90 ? " title='" + release.countdown + " day" + (release.countdown == 1 ? '' : 's') + "!'" : '') + ">Release Date: <span class='date'>" + release.releaseDate + '</span></p>' : '') +
+						(release ? "<p class='release'" + (release.countdown <= 90 ? " title='" + release.countdown + ' day' + (release.countdown == 1 ? '' : 's') + "!'" : '') + ">Release Date: <span class='date'>" + release.releaseDate + '</span></p>' : '') +
 
 						// Build rating stars string if rating exists
 						(rating ? "<span class='stars' title='Rated: " + +(rating / 2).toFixed(1) + '/5 stars - ' + votes.toLocaleString('en-US') + " votes'><span style='width:" + ((rating / 2) * 16) + "px;'></span></span><br>" : '') +
