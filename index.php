@@ -11,6 +11,9 @@
 	$tmdb_id           = null;
 	$upgrade_needed    = version_compare($latest_version->tag, $installed_version, '>');
 
+	// If a newer release exists, run the upgrade() function
+    if ($upgrade_needed) upgrade();
+
 	// If the add_movie button was pressed and it included a movie tmdbId and title...
 	if (isset($_POST['add_movie']) && isset($_POST['tmdbId']) && isset($_POST['title'])) {
 

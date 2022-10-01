@@ -47,3 +47,47 @@
 		if (substr($response, 0, strlen($query)) === $query) {return true;}
 		else {return false;}
 	}
+
+	// Upgrade the site from GitHub
+	function upgrade() {
+        try {
+
+            $exclude_files = array('.gitignore', 'LICENSE', 'README.md', 'config.php');
+            $repository    = 'https://github.com/dynamiccookies/Radarr-Assistant/';
+            $source        = 'Radarr-Assistant-main';
+            $file          = file_put_contents(dirname(__DIR__) . '/install.zip', fopen($repository . 'archive/main.zip', 'r'), LOCK_EX);
+
+            if ($file === false) ifttt_api($ifttt_api_key, 'issue', 'Error Upgrading', 'Automatic upgrade failed at `$file === false`');
+
+            $zip           = new ZipArchive;
+            $results       = $zip->open(dirname(__DIR__) . '/install.zip');
+
+            if ($results === true) {
+
+                for ($i=0; $i<$zip->numFiles; $i++) {
+                    $name = $zip->getNameIndex($i);
+
+                    if (strpos($name, "{$source}/") !== 0) continue;
+
+                    $name_array = explode('/', $name);
+                    if (in_array(end($name_array), $exclude_files)) continue;
+
+                    $file = dirname(__DIR__) . '/' . substr($name, strlen($source) + 1);
+                    if (substr($file, -1) != '/') {
+                        $dir = dirname($file);
+                        if (!is_dir($dir)) mkdir($dir, 0777, true);
+                        $fread  = $zip->getStream($name);
+                        $fwrite = fopen($file, 'w');
+                        while ($data = fread($fread, 1024)) {fwrite($fwrite, $data);}
+                        fclose($fread);
+                        fclose($fwrite);
+                    }
+                }
+
+                $zip->close();
+                unlink(dirname(__DIR__) . '/install.zip');
+
+                echo "<meta http-equiv='refresh' content='0'>";
+            } else {ifttt_api($ifttt_api_key, 'issue', 'Error Upgrading', 'Automatic upgrade failed at `$results === true -> else`');}
+        } catch (Exception $e) {ifttt_api($ifttt_api_key, 'issue', 'Error Upgrading', 'Automatic upgrade failed in the try/catch. Error: ' . $e);}
+	}
