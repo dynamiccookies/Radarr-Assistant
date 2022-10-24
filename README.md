@@ -2,6 +2,8 @@
 ![GitHub](https://img.shields.io/github/license/dynamiccookies/Radarr-Assistant?style=for-the-badge "License")
 ![GitHub Release Date](https://img.shields.io/github/release-date/dynamiccookies/Radarr-Assistant?style=for-the-badge "Release Date")
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/dynamiccookies/radarr-assistant?display_name=tag&include_prereleases&sort=semver&style=for-the-badge "Release Version")
+[<img alt="Deployed with FTP Deploy Action" src="https://img.shields.io/badge/Deployed With-Simple FTP deploy-%3CCOLOR%3E?style=for-the-badge&color=0077b6">](https://github.com/kevinpainchaud/simple-ftp-deploy-action)
+
 
 A webpage integrated with Radarr's API that allows users to search for movies, verify movies currently in the Radarr library, and add new movies to Radarr's queue all without giving direct access to Radarr itself. 
 
