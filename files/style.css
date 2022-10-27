@@ -13,6 +13,7 @@ h2.noresults {
 	text-align:       center;
 	width:            75%;
 }
+i.fa {cursor: pointer;}
 #movieDetails {
 	padding:    0 10%;
 	margin-top: 150px;
