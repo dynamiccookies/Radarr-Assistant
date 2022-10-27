@@ -1,6 +1,10 @@
 <?php 
-	include 'admin/config.php';
-	include 'files/functions.php';
+
+	$include = true;
+	require_once 'admin/config.php';
+
+	$include = true;
+	require_once 'files/functions.php';
 
 	// Declare and set global PHP variables
 	$installed_version = 'v0.1.1-alpha';

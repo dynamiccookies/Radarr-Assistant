@@ -1,4 +1,11 @@
 <?php
+
+	// Do not allow a direct connection to this file
+	if (!isset($include)) {
+		header('HTTP/1.0 403 Forbidden');
+		exit;
+	} else {unset($include);}
+
 	// Declare and set global variables
 	$debug          = FALSE; // Changing to TRUE enables console logging in browser for troubleshooting
 	$https          = FALSE; // Change to TRUE if Radarr -> Settings (show advanced) -> 'Enable SSL' is enabled

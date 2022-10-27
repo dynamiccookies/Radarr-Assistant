@@ -1,4 +1,11 @@
 <?php
+
+	// Do not allow a direct connection to this file
+	if (!isset($include)) {
+		header('HTTP/1.0 403 Forbidden');
+		exit;
+	} else {unset($include);}
+
 	// Get the latest version from GitHub and return array of attributes
 	function get_latest_version() {
 		$github  = 'https://api.github.com/repos/dynamiccookies/Radarr-Assistant/releases';
